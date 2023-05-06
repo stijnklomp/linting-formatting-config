@@ -1,15 +1,15 @@
-export default {
-	root: true,
+module.exports = {
+//export default [{
 	env: {
-		commonjs: false,
+		commonjs: true,
 		es6: true,
 		node: true
 	},
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
 		ecmaVersion: 2021,
-			sourceType: "module",
-			project: ["./tsconfig.eslint.json"]
+		sourceType: "module",
+		project: ["./tsconfig.eslint.json"]
 	},
 	plugins: [
 		"@typescript-eslint",
@@ -20,9 +20,7 @@ export default {
 		"airbnb-typescript/base",
 		"plugin:import/errors",
 		"plugin:react/recommended",
-		"plugin:jsx-a11y/recommended",
-		"plugin:prettier/recommended",
-		"prettier/react"
+		"plugin:jsx-a11y/recommended"
 	],
 	rules: {
 		"import/extensions": "off",
@@ -71,4 +69,5 @@ export default {
 			}
 		}
 	]
+//}]
 }
