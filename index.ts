@@ -1,73 +1,70 @@
-module.exports = {
-//export default [{
-	env: {
-		commonjs: true,
-		es6: true,
-		node: true
-	},
-	parser: "@typescript-eslint/parser",
-	parserOptions: {
-		ecmaVersion: 2021,
-		sourceType: "module",
-		project: ["./tsconfig.eslint.json"]
-	},
-	plugins: [
-		"@typescript-eslint",
-		"react-hooks"
+export const prettierConfig = {
+	"tabWidth": 4,
+	"useTabs": true,
+	"semi": false,
+	"singleQuote": false,
+	"jsxSingleQuote": false,
+	"trailingComma": "none",
+	"bracketSpacing": true,
+	"bracketSameLine": true,
+	"arrowParens": "always",
+	"insertPragma": false,
+	"htmlWhitespaceSensitivity": "css"
+}
+
+//export * as eslintConfig from "./eslint.config.js"
+export const eslintConfig = {
+	files: [
+		"*.js",
+		"*.ts"
 	],
-	extends: [
-		"airbnb-base",
-		"airbnb-typescript/base",
-		"plugin:import/errors",
-		"plugin:react/recommended",
-		"plugin:jsx-a11y/recommended"
+	ignores: [
+		"node_modules/",
+		"doc/",
+		"build/",
 	],
 	rules: {
 		"import/extensions": "off",
 		"import/prefer-default-export": "off",
-		camelcase: ["error", {
-			properties: "always",
-			ignoreDestructuring: true
+		"camelcase": ["error", {
+			"properties": "always",
+			"ignoredestructuring": true
 		}],
-		"arrow-parens": ["error", "as-needed", { requireForBlockBody: true }],
-		"comma-dangle": ["error", "never"],
-		"no-unused-vars": ["error", { ignoreRestSiblings: true }],
-		"object-curly-newline": ["error", {
-			consistent: true
-		}],
+		"no-unused-vars": ["error", { ignorerestsiblings: true }],
 		"padding-line-between-statements": [
 			"error",
-			{ blankLine: "always", prev: "*", next: ["export", "class", "function", "try", "if", "return"] },
-			{ blankLine: "always", prev: "block-like", next: "*" },
-			{ blankLine: "never", prev: "block-like", next: ["case", "default"] },
-			{ blankLine: "any", prev: "export", next: "export" }
+			{ blankline: "always", prev: "*", next: ["export", "class", "function", "try", "if", "return"] },
+			{ blankline: "always", prev: "block-like", next: "*" },
+			{ blankline: "never", prev: "block-like", next: ["case", "default"] },
+			{ blankline: "any", prev: "export", next: "export" }
 		],
 		"no-restricted-syntax": [
 			"error",
-			"FunctionExpression",
-			"FunctionDeclaration"
+			"functionexpression",
+			"functiondeclaration"
 		],
-		// Jest
+		// jest
 		"jest/no-disabled-tests": "warn",
 		"jest/no-focused-tests": "warn",
 		"jest/no-identical-title": "warn",
 		"jest/prefer-to-have-length": "warn",
-		"jest/valid-expect": "warn"
-	},
-	overrides: [
-		{
-			files: ["**/*.ts"],
-			parserOptions: {
-				project: ["./tsconfig.json"],
-			},
-			extends: [
-				"plugin:@typescript-eslint/recommended",
-				"plugin:@typescript-eslint/recommended-requiring-type-checking",
-			],
-			rules: {
-				// Add any additional TypeScript-specific rules or overrides here
+		"jest/valid-expect": "warn",
+		// prettier
+		"prettier/prettier": [
+			"error",
+			{
+				"tabwidth": 4,
+				"usetabs": true,
+				"semi": false,
+				"singlequote": false,
+				"jsxsinglequote": false,
+				"trailingcomma": "none",
+				"bracketspacing": true,
+				"bracketsameline": true,
+				"arrowparens": "always",
+				"insertpragma": false,
+				"htmlwhitespacesensitivity": "css"
 			}
-		}
-	]
-//}]
+		]
+	},
 }
