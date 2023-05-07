@@ -12,11 +12,10 @@ export const prettierConfig = {
 	"htmlWhitespaceSensitivity": "css"
 }
 
-//export * as eslintConfig from "./eslint.config.js"
 export const eslintConfig = {
 	files: [
-		"*.js",
-		"*.ts"
+		"*.js?(x)",
+		"*.ts?(x)"
 	],
 	ignores: [
 		"node_modules/",
