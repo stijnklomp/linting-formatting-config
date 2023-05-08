@@ -12,7 +12,6 @@
     "files": [
         "build/**/*"
     ],
-    "type": "module",
     "parser": "@babel/eslint-parser",
     "dependencies": {
         "eslint-config-airbnb-base": "^15.0.0"
