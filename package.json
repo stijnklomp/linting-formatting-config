@@ -12,10 +12,9 @@
 	},
 	"files": [
 		"eslint.js",
-		"tsconfig.eslint.js",
-		"tsconfig.js",
+		"tsconfig.base.json",
 		"prettier.js",
-		".editorconfig"
+		"typedoc.json"
 	],
 	"dependencies": {
 		"eslint-config-airbnb-base": "^15.0.0"
