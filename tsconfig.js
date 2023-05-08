@@ -1,4 +1,4 @@
-{
+module.exports = {
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./build",

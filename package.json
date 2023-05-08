@@ -1,65 +1,61 @@
 {
-    "name": "@stijnklomp/eslint-config",
-    "description": "ESLint and Prettier configuration for code projects",
-    "version": "1.0.0",
-    "author": "stijnklomp",
-    "license": "MIT",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "ssh://git@github.com:stijnklomp/package-template.git"
-    },
-    "files": [
-        "build/**/*"
-    ],
-    "parser": "@babel/eslint-parser",
-    "dependencies": {
-        "eslint-config-airbnb-base": "^15.0.0"
-    },
-    "devDependencies": {
-        "eslint-config-prettier": "^8.8.0"
-    },
-    "peerDependencies": {
-        "@types/jest": "^29.5.1",
-        "@typescript-eslint/eslint-plugin": "^5.59.2",
-        "@typescript-eslint/parser": "^5.59.2",
-        "babel-eslint": "^10.1.0",
-        "eslint": "^8.40.0",
-        "eslint-config-airbnb": "^19.0.4",
-        "eslint-config-airbnb-typescript": "^17.0.0",
-        "eslint-plugin-import": "^2.27.5",
-        "eslint-plugin-jest": "^27.2.1",
-        "eslint-plugin-jsx": "^0.1.0",
-        "eslint-plugin-jsx-a11y": "^6.7.1",
-        "eslint-plugin-prettier": "^4.2.1",
-        "eslint-plugin-react": "^7.32.2",
-        "eslint-plugin-react-hooks": "^4.6.0",
-        "typescript": "^5.0.4"
-    },
-    "peerDependenciesMeta": {
-        "@typescript-eslint/eslint-plugin": {
-            "optional": true
-        },
-        "@typescript-eslint/parser": {
-            "optional": true
-        },
-        "eslint-config-airbnb-typescript": {
-            "optional": true
-        },
-        "eslint-plugin-jest": {
-            "optional": true
-        },
-        "eslint-plugin-jsx-a11y": {
-            "optional": true
-        },
-        "eslint-plugin-react": {
-            "optional": true
-        },
-        "eslint-plugin-react-hooks": {
-            "optional": true
-        },
-        "typescript": {
-            "optional": true
-        }
-    }
+	"type": "commonjs",
+	"name": "@stijnklomp/eslint-config",
+	"description": "ESLint and Prettier configuration for code projects",
+	"version": "1.0.0",
+	"author": "stijnklomp",
+	"license": "MIT",
+	"main": "eslint.js",
+	"repository": {
+		"type": "git",
+		"url": "ssh://git@github.com:stijnklomp/package-template.git"
+	},
+	"files": [
+		"eslint.js",
+		"tsconfig.eslint.js",
+		"tsconfig.js",
+		"prettier.js",
+		".editorconfig"
+	],
+	"dependencies": {
+		"eslint-config-airbnb-base": "^15.0.0"
+	},
+	"devDependencies": {
+		"@babel/eslint-parser": "^7.21.8",
+		"eslint-config-prettier": "^8.8.0"
+	},
+	"peerDependencies": {
+		"@types/jest": "^29.5.1",
+		"eslint": "^8.40.0",
+		"eslint-config-airbnb": "^19.0.4",
+		"eslint-config-airbnb-typescript": "^17.0.0",
+		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-jest": "^27.2.1",
+		"eslint-plugin-jsx": "^0.1.0",
+		"eslint-plugin-jsx-a11y": "^6.7.1",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-react": "^7.32.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"typescript": "^5.0.4"
+	},
+	"peerDependenciesMeta": {
+		"eslint-config-airbnb-typescript": {
+			"optional": true
+		},
+		"eslint-plugin-jest": {
+			"optional": true
+		},
+		"eslint-plugin-jsx-a11y": {
+			"optional": true
+		},
+		"eslint-plugin-react": {
+			"optional": true
+		},
+		"eslint-plugin-react-hooks": {
+			"optional": true
+		},
+		"typescript": {
+			"optional": true
+		}
+	}
 }
