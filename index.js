@@ -14,8 +14,8 @@ export const prettierConfig = {
 
 export const eslintConfig = {
 	files: [
-		"*.js?(x)",
-		"*.ts?(x)"
+		"**/*.js?(x)",
+		"**/*.ts?(x)"
 	],
 	ignores: [
 		"node_modules/",
