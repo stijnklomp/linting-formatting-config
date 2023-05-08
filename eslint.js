@@ -1,8 +1,9 @@
 module.exports = {
-	// parser: "@babel/eslint-parser",
-	parserOptions: {
-		ecmaVersion: 2021
-	},
+	extends: [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/eslint-recommended",
+		"plugin:@typescript-eslint/recommended"
+	],
 	ignorePatterns: [
 		"node_modules/**",
 		"doc/**",
@@ -49,13 +50,14 @@ module.exports = {
 	overrides: [
 		{
 			// Typescript
-			files: ["./**/*.{ts,tsx}"],
+			files: ["**/*.{ts,tsx}"],
 			extends: [
+				"eslint:recommended",
 				"plugin:@typescript-eslint/recommended",
-				"plugin:@typescript-eslint/recommended-requiring-type-checking",
+				"plugin:@typescript-eslint/recommended-requiring-type-checking"
 			],
 			parserOptions: {
-				project: ["./tsconfig.eslint.js"]
+				project: "./tsconfig.json"
 			}
 		},
 		{
