@@ -10,6 +10,7 @@ module.exports = {
 		"build/**"
 	],
 	rules: {
+		"prefer-arrow-callback": "error",
 		"import/extensions": "off",
 		"import/prefer-default-export": "off",
 		"camelcase": ["error", {
@@ -17,6 +18,7 @@ module.exports = {
 			"ignoreDestructuring": true
 		}],
 		"no-unused-vars": ["error", { ignoreRestSiblings: true }],
+		"no-mixed-spaces-and-tabs": "off",
 		"padding-line-between-statements": [
 			"error",
 			{ blankLine: "always", prev: "*", next: ["export", "class", "function", "try", "if", "return"] },
@@ -29,6 +31,14 @@ module.exports = {
 			"functionexpression",
 			"functiondeclaration"
 		],
+		"no-class-assign": "error",
+		"no-confusing-arrow": "off",
+		"no-dupe-class-members": "error",
+		"no-duplicate-imports": ["error", { "includeExports": false }],
+		"no-this-before-super": "error",
+		"no-var": "error",
+		"prefer-arrow-callback": ["error", { "allowNamedFunctions": false, "allowUnboundThis": false }],
+		"prefer-const": ["error", { "ignoreReadBeforeAssign": false, "destructuring": "any" }],
 		// Prettier
 		"prettier/prettier": [
 			"error",
@@ -58,6 +68,13 @@ module.exports = {
 			],
 			parserOptions: {
 				project: "./tsconfig.json"
+			},
+			rules: {
+				"@typescript-eslint/no-inferrable-types": "off",
+				"no-mixed-spaces-and-tabs": "off",
+				"@typescript-eslint/restrict-template-expressions": "off",
+				"@typescript-eslint/no-unused-vars": ["error", { ignoreRestSiblings: true }],
+				"prefer-arrow-callback": "error",
 			}
 		},
 		{
