@@ -39,6 +39,7 @@ module.exports = {
 		"no-var": "error",
 		"prefer-arrow-callback": ["error", { "allowNamedFunctions": false, "allowUnboundThis": false }],
 		"prefer-const": ["error", { "ignoreReadBeforeAssign": false, "destructuring": "any" }],
+		"quote-props": ["warn", "always"],
 		// Prettier
 		"prettier/prettier": [
 			"error",
@@ -75,6 +76,7 @@ module.exports = {
 				"@typescript-eslint/restrict-template-expressions": "off",
 				"@typescript-eslint/no-unused-vars": ["error", { ignoreRestSiblings: true }],
 				"prefer-arrow-callback": "error",
+				"@typescript-eslint/no-explicit-any": "warn"
 			}
 		},
 		{
