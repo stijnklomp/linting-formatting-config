@@ -2,14 +2,14 @@
 
 ![GitHub](https://img.shields.io/github/license/stijnklomp/eslint-configuration?style=flat)
 
-An ESLint and Prettier configuration for linting and formatting code projects.
+An ESLint and Prettier configuration for linting and formatting code proje
 
 ## Installation
 
 You can install the package via npm by running the following command:
 
 ```bash
-npm install @stijnklomp/eslint-config --save-dev
+npm install stijnklomp-eslint-config --save-dev
 ```
 
 ### Dependencies
