@@ -39,7 +39,7 @@ module.exports = {
 		"no-var": "error",
 		"prefer-arrow-callback": ["error", { "allowNamedFunctions": false, "allowUnboundThis": false }],
 		"prefer-const": ["error", { "ignoreReadBeforeAssign": false, "destructuring": "any" }],
-		"quote-props": ["warn", "always"],
+		//"quote-props": ["warn", "always"],
 		// Prettier
 		"prettier/prettier": [
 			"error",
