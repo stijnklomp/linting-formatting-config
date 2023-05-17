@@ -2,7 +2,7 @@
   "type": "commonjs",
   "name": "stijnklomp-eslint-config",
   "description": "ESLint and Prettier configuration for code projects",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "stijnklomp",
   "license": "MIT",
   "main": "eslint.js",
