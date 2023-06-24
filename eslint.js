@@ -25,8 +25,14 @@ module.exports = {
 			{ blankLine: "never", prev: "block-like", next: ["case", "default"] },
 			{ blankLine: "any", prev: "export", next: "export" }
 		],
+		"no-console": ["warn", { allow: ["warn", "error"] }],
 		"no-restricted-syntax": [
 			"error",
+			{
+				selector:
+				"CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+				message: "Unexpected property on console object was called"
+			},
 			"functionexpression",
 			"functiondeclaration"
 		],
