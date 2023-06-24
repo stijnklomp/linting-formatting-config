@@ -248,6 +248,7 @@ This ESLint configuration:
   - `"no-unused-vars"`: Raises an error for unused variables, while ignoring rest siblings.
   - `"no-mixed-spaces-and-tabs"`: Disables the rule that disallows mixing tabs and spaces.
   - `"padding-line-between-statements"`: Enforces blank lines between specific types of statements.
+  - `"no-console"`: Raises a warning when console is used except for `warn` and `error`.
   - `"no-restricted-syntax"`: Raises an error for restricted syntax (functionexpression and functiondeclaration).
   - `"no-class-assign"`: Raises an error when assigning a value to a class.
   - `"no-confusing-arrow"`: Disables the rule that disallows confusing arrow function syntax.
