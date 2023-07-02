@@ -2,7 +2,7 @@
   "type": "commonjs",
   "name": "stijnklomp-eslint-config",
   "description": "ESLint and Prettier configuration for code projects",
-  "version": "1.0.3",
+  "version": "1.1.1",
   "author": "stijnklomp",
   "license": "MIT",
   "main": "eslint.js",
@@ -17,13 +17,6 @@
     "prettier.js",
     "typedoc.json"
   ],
-  "dependencies": {
-    "eslint-config-airbnb-base": "^15.0.0"
-  },
-  "devDependencies": {
-    "@babel/eslint-parser": "^7.21.8",
-    "eslint-config-prettier": "^8.8.0"
-  },
   "peerDependencies": {
     "@types/jest": "^29.5.1",
     "eslint": "^8.40.0",

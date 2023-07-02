@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/stijnklomp/eslint-configuration?style=flat)
 
-An ESLint and Prettier configuration for linting and formatting code proje
+An ESLint and Prettier configuration for linting and formatting code project
 
 ## Installation
 
@@ -13,15 +13,6 @@ npm install stijnklomp-eslint-config --save-dev
 ```
 
 ### Dependencies
-
-##### Dependencies
-
-- `eslint-config-airbnb-base` (version "^15.0.0"): This dependency provides the base ESLint configuration following the Airbnb style guide. It is used for linting JavaScript code.
-
-##### Development Dependencies
-
-- `@babel/eslint-parser` (version "^7.21.8"): This development dependency is a parser for ESLint that allows linting of code that uses modern JavaScript syntax.
-- `eslint-config-prettier` (version "^8.8.0"): This development dependency disables ESLint rules that conflict with Prettier, a code formatter, to ensure consistent formatting.
 
 ##### Peer Dependencies
 
@@ -56,7 +47,7 @@ These optional peer dependencies are not required for the project to function bu
 You can install these dependencies using npm. Make sure to install them as development dependencies by adding the `--save-dev` flag to the installation command. For example:
 
 ```bash
-npm install eslint-config-airbnb-base@^15.0.0 @babel/eslint-parser@^7.21.8 eslint-config-prettier@^8.8.0 @types/jest@^29.5.1 eslint@^8.40.0 eslint-config-airbnb@^19.0.4 eslint-config-airbnb-typescript@^17.0.0 eslint-plugin-import@^2.27.5 eslint-plugin-jest@^27.2.1 eslint-plugin-jsx@^0.1.0 eslint-plugin-jsx-a11y@^6.7.1 eslint-plugin-prettier@^4.2.1 eslint-plugin-react@^7.32.2 eslint-plugin-react-hooks@^4.6.0 typescript@^5.0.4 --save-dev
+npm install eslint-config-prettier@^8.8.0 @types/jest@^29.5.1 eslint@^8.40.0 eslint-config-airbnb@^19.0.4 eslint-config-airbnb-typescript@^17.0.0 eslint-plugin-import@^2.27.5 eslint-plugin-jest@^27.2.1 eslint-plugin-jsx@^0.1.0 eslint-plugin-jsx-a11y@^6.7.1 eslint-plugin-prettier@^4.2.1 eslint-plugin-react@^7.32.2 eslint-plugin-react-hooks@^4.6.0 typescript@^5.0.4 --save-dev
 ```
 
 Ensure that you have the appropriate versions of the dependencies compatible with this package by referring to the `"peerDependencies"` section in the `package.json` file.

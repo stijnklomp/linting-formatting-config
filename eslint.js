@@ -97,6 +97,20 @@ module.exports = {
 				"jest/prefer-to-have-length": "warn",
 				"jest/valid-expect": "warn",
 			}
+		},
+		{
+			// React
+			files: ["**/*.{jsx,tsx}"],
+			extends: [
+				"plugin:react/recommended",
+				"plugin:react-hooks/recommended"
+			],
+			parserOptions: {
+				project: "./tsconfig.json"
+			},
+			rules: {
+				"react/display-name": "off"
+			}
 		}
 	]
 }
