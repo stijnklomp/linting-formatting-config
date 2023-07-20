@@ -2,7 +2,7 @@
   "type": "commonjs",
   "name": "stijnklomp-eslint-config",
   "description": "ESLint and Prettier configuration for code projects",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "author": "stijnklomp",
   "license": "MIT",
   "main": "eslint.js",
@@ -12,10 +12,14 @@
     "url": "git+ssh://git@github.com/stijnklomp/eslint-configuration.git"
   },
   "files": [
-    "eslint.js",
     "tsconfig.base.json",
     "prettier.js",
-    "typedoc.json"
+    "typedoc.json",
+    "eslintRules.js",
+    "jestRules.js",
+    "prettierRules.js",
+    "reactRules.js",
+    "typescriptRules.js"
   ],
   "peerDependencies": {
     "@types/jest": "^29.5.1",
