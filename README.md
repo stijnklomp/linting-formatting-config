@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/github/license/stijnklomp/eslint-configuration?style=flat)
 
-An ESLint and Prettier configuration for linting and formatting code project
+An ESLint and Prettier configuration for linting and formatting code projects.
 
 ## Installation
 
@@ -58,47 +58,57 @@ Find example configuration files at the bottom for using everything that is incl
 
 ##### ESLint
 
-To use ESLint in your project, you need to create an ESLint configuration file (`.eslintrc.js`) and extend the ESLint config (`@stijnklomp/eslint-config/eslint`).
+To use ESLint in your project, you need to create an ESLint configuration file (`.eslintrc.js`) and extend the ESLint config (`@stijnklomp/eslint-config/eslintRules.js`).
+
+Include the rules that you desire by extending any of the following files:
 
 `.eslintrc.js`
 
 ```javascript
 module.exports = {
-  extends: ["@stijnklomp/eslint-config/eslint"],
-};
+  extends: [
+		"./node_modules/stijnklomp-eslint-config/eslintRules.js",
+		"./node_modules/stijnklomp-eslint-config/jestRules.js",
+		"./node_modules/stijnklomp-eslint-config/reactRules.js",
+		"./node_modules/stijnklomp-eslint-config/typescriptRules.js"
+	]
+}
 ```
 
 ##### Prettier
 
-To use Prettier in your project, you need to create an Prettier configuration file (`.prettierrc.js`) and extend the Prettier config (`@stijnklomp/eslint-config/prettier`).
+To use Prettier in your project, you need to create a Prettier configuration file (`.prettierrc.js`) and extend the Prettier config (`stijnklomp-eslint-config/prettier`).
 
 `.prettierrc.js`
 
 ```javascript
-module.exports = require("@stijnklomp/eslint-config/prettier");
+module.exports = require("./node_modules/stijnklomp-eslint-config/prettier")
 ```
 
 You will also need to add 'prettier' as a plugin in your ESLint configuration file.
+
+You can optionally add linting rules for Prettier by extending the Prettier rules file (`stijnklomp-eslint-config/prettierRules.js`).
 
 `.eslintrc.js`
 
 ```javascript
 module.exports = {
   plugins: ["prettier"],
-};
+  settings: {
+		"prettier/prettier": require("./node_modules/stijnklomp-eslint-config/prettierRules.js")
+	}
+}
 ```
 
 ##### Typescript
 
-To use Typescript in your project, you need to create an Typescript configuration file (`tsconfig.json`) and extend the Typescript config (`@stijnklomp/eslint-config/tsconfig.base`).
+To use Typescript in your project, you need to create a Typescript configuration file (`tsconfig.json`) and extend the Typescript config (`stijnklomp-eslint-config/tsconfig.base`).
 
 `tsconfig.json`
 
 ```json
 {
-  "extends": "@stijnklomp/eslint-config/tsconfig.base",
-  "include": ["src", "global.d.ts"],
-  "exclude": ["node_modules", "build"]
+  "extends": "./node_modules/stijnklomp-eslint-config/tsconfig.base"
 }
 ```
 
@@ -109,23 +119,19 @@ You will also need to add '@typescript-eslint' as a plugin and set `@typescript-
 ```javascript
 module.exports = {
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
-};
+  plugins: ["@typescript-eslint"]
+}
 ```
-
-##### Jest
-
-The package automatically comes with Jest specific linting rules.
 
 ##### Typedoc
 
-To use Typedoc in your project, you need to create an Typedoc configuration file (`typedoc.json`) and extend the Typedoc config (`@stijnklomp/eslint-config/typedoc`).
+To use Typedoc in your project, you need to create an Typedoc configuration file (`typedoc.json`) and extend the Typedoc config (`@stijnklomp-eslint-config/typedoc`).
 
 `typedoc.json`
 
 ```json
 {
-  "extends": ["@stijnklomp/eslint-config/typedoc"]
+  "extends": ["./node_modules/stijnklomp-eslint-config/typedoc"]
 }
 ```
 
@@ -136,53 +142,122 @@ To use Typedoc in your project, you need to create an Typedoc configuration file
 ```javascript
 module.exports = {
   root: true,
-  extends: ["@stijnklomp/eslint-config/eslint"],
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "prettier"],
-  parserOptions: {
-    ecmaVersion: 2021,
-    srouceType: "module",
-  },
-  env: {
-    browser: true,
-    node: true,
-    commonjs: true,
-    es6: true,
-  },
-};
+	extends: [
+		"./node_modules/stijnklomp-eslint-config/eslintRules.js",
+		"./node_modules/stijnklomp-eslint-config/jestRules.js",
+		"./node_modules/stijnklomp-eslint-config/typescriptRules.js"
+	],
+	parser: "@typescript-eslint/parser",
+	plugins: ["@typescript-eslint", "prettier"],
+	parserOptions: {
+		ecmaVersion: 2021,
+		sourceType: "module"
+	},
+	env: {
+		browser: true,
+		node: true,
+		commonjs: true,
+		es6: true
+	},
+	settings: {
+		"prettier/prettier": require("./node_modules/stijnklomp-eslint-config/prettierRules.js")
+	}
+}
 ```
 
 `.prettierrc.js`
 
 ```javascript
-module.exports = require("@stijnklomp/eslint-config/prettier");
+module.exports = require("./node_modules/stijnklomp-eslint-config/prettier")
 ```
 
 `tsconfig.json`
 
 ```json
 {
-  "extends": "@stijnklomp/eslint-config/tsconfig.base",
-  "include": ["src", "global.d.ts"],
-  "exclude": ["node_modules", "build"]
+	"compileOnSave": false,
+	"compilerOptions": {
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"baseUrl": ".",
+		"declaration": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"incremental": true,
+		"inlineSourceMap": false,
+		"isolatedModules": true,
+		"jsx": "preserve",
+		"lib": ["dom", "dom.iterable"],
+		"listEmittedFiles": false,
+		"listFiles": false,
+		"module": "ES2022",
+		"moduleResolution": "node",
+		"noEmit": true,
+		"noFallthroughCasesInSwitch": true,
+		"paths": {
+			"@/app/*": ["app/*"],
+			"@/features/*": ["features/*"],
+			"@/public/*": ["public/*"],
+			"@/tests/*": ["tests/*"]
+		},
+		"plugins": [
+			{
+				"name": "next"
+			}
+		],
+		"pretty": true,
+		"resolveJsonModule": true,
+		"rootDir": ".",
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "es5",
+		"traceResolution": false,
+		"types": ["node", "jest"]
+	},
+	"exclude": ["node_modules"],
+	"include": ["**/*.ts", "**/*.tsx"]
 }
 ```
 
-`jest.config.js`
+`jest.config.json`
 
-```javascript
-/** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
-  preset: "ts-jest",
-  testEnvironment: "node",
-};
+```json
+{
+	"testEnvironment": "node",
+	"rootDir": ".",
+	"roots": ["<rootDir>/tests/unit"],
+	"preset": "ts-jest/presets/default-esm",
+	"moduleNameMapper": {
+		"^(\\.{1,2}/.*)\\.js$": "$1",
+		"^(\\.{1,2}/.*)\\.ts$": "$1",
+		"^(\\.{1,2}/.*)\\.tsx$": "$1",
+		"^@/app/(.*)$": "<rootDir>/app/$1",
+		"^@/features/(.*)$": "<rootDir>/features/$1",
+		"^@/public/(.*)$": "<rootDir>/public/$1",
+		"^@/tests/(.*)$": "<rootDir>/tests/$1"
+	},
+	"moduleDirectories": ["node_modules"],
+	"testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$",
+	"moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
+	"modulePaths": ["<rootDir>"],
+	"coverageDirectory": "tests/unit/coverage",
+	"transform": {
+		"^.+\\.tsx?$": [
+			"ts-jest",
+			{
+				"useESM": true
+			}
+		]
+	}
+}
 ```
 
 `typedoc.json`
 
 ```json
 {
-  "extends": ["@stijnklomp/eslint-config/typedoc"]
+  "extends": ["./node_modules/stijnklomp-eslint-config/typedoc"],
+	"entryPoints": ["./app", "./features"]
 }
 ```
 
@@ -212,7 +287,7 @@ insert_final_newline = false
 
 ## Configuration Details
 
-This package provides a default ESLint and Prettier configuration. The configuration includes rules and settings for code style, formatting, and best practices.
+This package provides a default ESLint and Prettier configuration. The configurations include rules and settings for code style, formatting, and best practices.
 
 ## ESLint Configuration
 
@@ -292,21 +367,21 @@ This ESLint configuration:
 
 ## Prettier Configuration
 
-The Prettier configuration includes the following settings:
+The provided Prettier configuration includes the following settings:
 
 ```javascript
 {
-	"tabWidth": 4,
-		"useTabs": true,
-		"semi": false,
-		"singleQuote": false,
-		"jsxSingleQuote": false,
-		"trailingComma": "none",
-		"bracketSpacing": true,
-		"bracketSameLine": true,
-		"arrowParens": "always",
-		"insertPragma": false,
-		"htmlWhitespaceSensitivity": "css"
+  "tabWidth": 4,
+  "useTabs": true,
+  "semi": false,
+  "singleQuote": false,
+  "jsxSingleQuote": false,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "bracketSameLine": true,
+  "arrowParens": "always",
+  "insertPragma": false,
+  "htmlWhitespaceSensitivity": "css"
 }
 ```
 
