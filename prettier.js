@@ -9,5 +9,13 @@ module.exports = {
 	"bracketSameLine": true,
 	"arrowParens": "always",
 	"insertPragma": false,
-	"htmlWhitespaceSensitivity": "css"
+	"htmlWhitespaceSensitivity": "css",
+	"overrides": [
+		{
+			"files": ["*.yml", ".yaml"],
+			"options": {
+				"useTabs": false
+			}
+		}
+	]
 }
