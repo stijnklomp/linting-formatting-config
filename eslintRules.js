@@ -4,7 +4,7 @@ module.exports = {
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
   ],
-  ignorePatterns: ["node_modules/**", "doc/**", "build/**"],
+  ignorePatterns: ["node_modules/**", "doc/**", "build/**", "*.css", "*.sccs"],
   rules: {
     "import/extensions": "off",
     "import/prefer-default-export": "off",
