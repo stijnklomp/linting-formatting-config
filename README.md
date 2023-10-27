@@ -18,20 +18,25 @@ npm install stijnklomp-eslint-config --save-dev
 
 Peer dependencies are packages that the project expects to be provided by the consumer (the user or another package). They are not installed automatically and must be manually installed.
 
-- `@types/jest` (version "^29.5.1"): This peer dependency provides TypeScript type definitions for the Jest testing framework.
-- `eslint` (version "^8.40.0"): This peer dependency installs ESLint, a popular JavaScript linter.
+- `@types/jest` (version "^29.5.6"): This peer dependency provides TypeScript type definitions for the Jest testing framework.
+- `eslint` (version "^8.52.0"): This peer dependency installs ESLint, a popular JavaScript linter.
 - `eslint-config-airbnb` (version "^19.0.4"): This peer dependency provides additional ESLint configurations following the Airbnb style guide.
-- `eslint-config-airbnb-typescript` (version "^17.0.0"): This peer dependency provides ESLint configurations for TypeScript projects, following the Airbnb style guide.
-- `eslint-plugin-import` (version "^2.27.5"): This peer dependency provides ESLint rules for linting import/export statements.
-- `eslint-plugin-jest` (version "^27.2.1"): This peer dependency provides ESLint rules specific to the Jest testing framework.
+- `eslint-config-airbnb-typescript` (version "^17.1.0"): This peer dependency provides ESLint configurations for TypeScript projects, following the Airbnb style guide.
+- `eslint-plugin-import` (version "^2.29.0"): This peer dependency provides ESLint rules for linting import/export statements.
+- `eslint-plugin-jest` (version "^27.6.0"): This peer dependency provides ESLint rules specific to the Jest testing framework.
 - `eslint-plugin-jsx` (version "^0.1.0"): This peer dependency provides ESLint rules for linting JSX syntax.
 - `eslint-plugin-jsx-a11y` (version "^6.7.1"): This peer dependency provides ESLint rules to improve accessibility in JSX.
-- `eslint-plugin-prettier` (version "^4.2.1"): This peer dependency allows integrating Prettier with ESLint to format code automatically.
-- `eslint-plugin-react` (version "^7.32.2"): This peer dependency provides ESLint rules for linting React code.
+- `eslint-plugin-prettier` (version "^5.0.1"): This peer dependency allows integrating Prettier with ESLint to format code automatically.
+- `eslint-plugin-react` (version "^7.332"): This peer dependency provides ESLint rules for linting React code.
 - `eslint-plugin-react-hooks` (version "^4.6.0"): This peer dependency provides ESLint rules for linting React Hooks.
-- `typescript` (version "^5.0.4"): This peer dependency installs TypeScript, a strongly-typed superset of JavaScript.
+- `typescript` (version "^5.2.0"): This peer dependency installs TypeScript, a strongly-typed superset of JavaScript.
 
 ##### Peer Dependencies Meta
+
+Use the following to install all peer dependencies not marked as optional:
+```bash
+npx install-peerdeps --dev @stijnklomp/eslint-config --only-peers
+```
 
 The following peer dependencies are optional:
 
@@ -43,12 +48,6 @@ The following peer dependencies are optional:
 - `typescript`: This peer dependency for TypeScript is marked as optional.
 
 These optional peer dependencies are not required for the project to function but are recommended for better linting and development experience, depending on the
-
-You can install these dependencies using npm. Make sure to install them as development dependencies by adding the `--save-dev` flag to the installation command. For example:
-
-```bash
-npm install eslint-config-prettier@^8.8.0 @types/jest@^29.5.1 eslint@^8.40.0 eslint-config-airbnb@^19.0.4 eslint-config-airbnb-typescript@^17.0.0 eslint-plugin-import@^2.27.5 eslint-plugin-jest@^27.2.1 eslint-plugin-jsx@^0.1.0 eslint-plugin-jsx-a11y@^6.7.1 eslint-plugin-prettier@^4.2.1 eslint-plugin-react@^7.32.2 eslint-plugin-react-hooks@^4.6.0 typescript@^5.0.4 --save-dev
-```
 
 Ensure that you have the appropriate versions of the dependencies compatible with this package by referring to the `"peerDependencies"` section in the `package.json` file.
 
