@@ -2,14 +2,14 @@
   "type": "commonjs",
   "name": "stijnklomp-linting-formatting-config",
   "description": "Linting and formatting configuration for Javascript projects.",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "author": "stijnklomp",
   "license": "MIT",
   "main": "eslint.js",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/stijnklomp/eslint-configuration.git"
+    "url": "git+ssh://git@github.com/stijnklomp/linting-formatting-config.git"
   },
   "files": [
     "tsconfig.base.json",
