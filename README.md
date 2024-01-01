@@ -139,7 +139,7 @@ module.exports = {
 
 ##### Typedoc
 
-To use Typedoc in your project, you need to create an Typedoc configuration file (`typedoc.json`) and extend the Typedoc config (`@stijnklomp-linting-formatting-config/typedoc`).
+To use Typedoc in your project, you need to create a Typedoc configuration file (`typedoc.json`) and extend the Typedoc config (`@stijnklomp-linting-formatting-config/typedoc`).
 
 `typedoc.json`
 
