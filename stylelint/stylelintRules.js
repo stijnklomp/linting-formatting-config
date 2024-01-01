@@ -1,12 +1,4 @@
 module.exports = {
-	plugins: ["stylelint-scss"],
-	extend: "stylelint-config-standard",
-	overrides: [
-		{
-		  files: ["**/*.scss"],
-		  customSyntax: "postcss-scss"
-		}
-	],
 	rules: {
 		"selector-class-pattern": [
 			"^[a-z][a-zA-Z]*(?:(?:_{2}|-{2})[a-z][a-zA-Z]*)*$",
