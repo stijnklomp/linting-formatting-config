@@ -2,7 +2,7 @@
   "type": "commonjs",
   "name": "stijnklomp-linting-formatting-config",
   "description": "Linting and formatting configuration for Javascript projects.",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "author": "stijnklomp",
   "license": "MIT",
   "main": "eslint.js",
@@ -12,14 +12,18 @@
     "url": "git+ssh://git@github.com/stijnklomp/linting-formatting-config.git"
   },
   "files": [
-    "tsconfig.base.json",
-    "prettier.js",
-    "typedoc.json",
+	".editorconfig",
     "eslintRules.js",
-    "jestRules.js",
-    "prettierRules.js",
-    "reactRules.js",
-    "typescriptRules.js"
+	"jestRules.js",
+	"prettier/prettier.js",
+	"prettier/prettierRules.js",
+	"reactRules.js",
+	"stylelint/stylelint.js",
+	"stylelint/stylelintRules.js",
+	"stylelintRulesMui.js",
+	"typedoc.json",
+	"typescript/tsconfig.base.json",
+	"typescript/typescriptRules.js"
   ],
   "peerDependencies": {
     "@types/jest": "^29.5.11",
