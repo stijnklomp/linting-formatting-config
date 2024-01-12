@@ -53,6 +53,6 @@ module.exports = {
       "error",
       { ignoreReadBeforeAssign: false, destructuring: "any" },
     ],
-    //"quote-props": ["warn", "always"],
+	"@typescript-eslint/no-unnecessary-condition": "error"
   },
 };
