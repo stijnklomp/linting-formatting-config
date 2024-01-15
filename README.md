@@ -1,8 +1,10 @@
 # ESLint configuration
 
-![GitHub](https://img.shields.io/github/license/stijnklomp/linting-formatting-config?style=flat)
-
-An ESLint and Prettier configuration for linting and formatting code projects.
+<p align="center">An <a href="https://eslint.org/" target="_blank">ESLint</a> and <a href="https://prettier.io/" target="_blank">Prettier</a> configuration for linting and formatting code projects.</p>
+<p align="center">
+<a href="https://www.npmjs.com/package/stijnklomp-linting-formatting-config" target="_blank"><img src="https://img.shields.io/npm/v/stijnklomp-linting-formatting-config" alt="NPM Version" /></a>
+<img src="https://img.shields.io/github/license/stijnklomp/nestjs-template?style=flat" alt="Package License" />
+</p>
 
 ## Installation
 
@@ -71,6 +73,9 @@ module.exports = {
 		"./node_modules/stijnklomp-linting-formatting-config/reactRules.js",
 		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescriptRules.js",
 	],
+	parserOptions: {
+		project: "./tsconfig.json",
+	},
 };
 ```
 
@@ -212,7 +217,7 @@ module.exports = {
 		"types": ["node", "jest", "@testing-library/jest-dom"]
 	},
 	"exclude": ["node_modules"],
-	"include": ["**/*.ts", "**/*.tsx"]
+	"include": ["**/*.ts", "**/*.tsx", "jest.setup.js"]
 }
 ```
 
@@ -319,3 +324,7 @@ This ESLint configuration:
             -   `extends: ["plugin:jest/recommended"]`: Extends the recommended ESLint rules for Jest.
 
 These settings define the formatting rules for your code, such as indentation, semicolons, quotes, commas, and more.
+
+## License
+
+This project is licensed under the MIT License. Feel free to customize and use it for your own projects.
