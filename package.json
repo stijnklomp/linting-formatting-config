@@ -2,7 +2,7 @@
   "type": "commonjs",
   "name": "stijnklomp-linting-formatting-config",
   "description": "Linting and formatting configuration for Javascript projects.",
-  "version": "6.4.0",
+  "version": "6.5.0",
   "author": "stijnklomp",
   "license": "MIT",
   "main": "eslint.js",
