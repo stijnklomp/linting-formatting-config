@@ -14,7 +14,8 @@ module.exports = {
 		{
 			"files": ["*.yml", ".yaml"],
 			"options": {
-				"useTabs": false
+				"useTabs": false,
+				"tabWidth": 2
 			}
 		}
 	]
