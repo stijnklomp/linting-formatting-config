@@ -12,7 +12,7 @@ module.exports = {
 	"htmlWhitespaceSensitivity": "css",
 	"overrides": [
 		{
-			"files": ["*.yml", ".yaml"],
+			"files": ["**/*.{yml,yaml}"],
 			"options": {
 				"useTabs": false,
 				"tabWidth": 2

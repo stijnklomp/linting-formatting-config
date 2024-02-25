@@ -16,18 +16,21 @@ npm install stijnklomp-linting-formatting-config --save-dev
 
 ### Dependencies
 
+##### Required Dependencies
+
+-   `eslint`: ^8.57.0
+
 ##### Peer Dependencies
 
 Peer dependencies are packages that the project expects to be provided by the consumer (the user or another package). They are not installed automatically and must be manually installed.
 
--   `@types/jest`: ^29.5.11
--   `eslint`: ^8.56.0
+-   `@types/jest`: ^29.5.12
 -   `eslint-config-airbnb`: ^19.0.4
 -   `eslint-config-airbnb-typescript`: ^17.1.0
 -   `eslint-plugin-import`: ^2.29.1
--   `eslint-plugin-jest`: ^27.6.0
+-   `eslint-plugin-jest`: ^27.9.0
 -   `eslint-plugin-jsx-a11y`: ^6.8.0
--   `eslint-plugin-prettier`: ^5.1.2
+-   `eslint-plugin-prettier`: ^5.1.3
 -   `eslint-plugin-react`: ^7.33.2
 -   `eslint-plugin-react-hooks`: ^4.6.0
 -   `typescript`: ^5.3.3
@@ -121,7 +124,7 @@ module.exports = {
 
 ##### Typescript
 
-To use Typescript in your project, you need to create a Typescript configuration file (`tsconfig.json`) and extend the Typescript config (`stijnklomp-linting-formatting-config/typescript/tsconfig.base`).
+To use Typescript in your project, you could create a Typescript configuration file (`tsconfig.json`) and extend the Typescript config (`stijnklomp-linting-formatting-config/typescript/tsconfig.base`). (You could also create your own configuration file without extending the base file)
 
 `tsconfig.json`
 
