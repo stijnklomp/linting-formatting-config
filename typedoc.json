@@ -1,7 +1,6 @@
 {
-    "entryPoints": ["./src"],
 	"entryPointStrategy": "expand",
-	"out": "doc/code",
+	"out": "../../doc/code",
 	"theme": "default",
 	"includeVersion": true,
 	"validation": {
