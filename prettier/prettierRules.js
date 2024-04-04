@@ -9,7 +9,7 @@ module.exports = {
 					semi: false,
 					singlequote: false,
 					jsxsinglequote: false,
-					trailingcomma: "none",
+					trailingcomma: "all",
 					bracketspacing: true,
 					bracketsameline: true,
 					arrowparens: "always",
