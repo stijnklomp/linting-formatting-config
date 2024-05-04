@@ -1,8 +1,8 @@
 {
 	"type": "commonjs",
 	"name": "stijnklomp-linting-formatting-config",
-	"description": "Linting and formatting configuration for Javascript projects.",
-	"version": "6.9.0",
+	"description": "Linting and formatting configuration for Typescript projects.",
+	"version": "6.9.1",
 	"author": "stijnklomp",
 	"license": "MIT",
 	"main": "eslint.js",

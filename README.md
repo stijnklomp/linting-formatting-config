@@ -1,6 +1,6 @@
 # ESLint configuration
 
-<p align="center">An <a href="https://eslint.org/" target="_blank">ESLint</a> and <a href="https://prettier.io/" target="_blank">Prettier</a> configuration for linting and formatting code projects.</p>
+<p align="center">An <a href="https://eslint.org/" target="_blank">ESLint</a> and <a href="https://prettier.io/" target="_blank">Prettier</a> configuration for linting and formatting code projects. The configurations include rules and settings for code style, formatting, and best practices.</p>
 <p align="center">
 <a href="https://www.npmjs.com/package/stijnklomp-linting-formatting-config" target="_blank"><img src="https://img.shields.io/npm/v/stijnklomp-linting-formatting-config" alt="NPM Version" /></a>
 <img src="https://img.shields.io/github/license/stijnklomp/nestjs-template?style=flat" alt="Package License" />
@@ -157,7 +157,7 @@ To use Typedoc in your project, you need to create a Typedoc configuration file 
 }
 ```
 
-##### Example configuration files
+##### Full-length example configuration files
 
 `.eslintrc.js`
 
@@ -173,6 +173,7 @@ module.exports = {
 	plugins: ["@typescript-eslint", "prettier"],
 	parserOptions: {
 		ecmaVersion: 2021,
+		project: "./tsconfig.json",
 		sourceType: "module",
 	},
 	env: {
@@ -290,10 +291,6 @@ trim_trailing_whitespace = true
 insert_final_newline = false
 ```
 
-## Configuration Details
-
-This package provides a default ESLint and Prettier configuration. The configurations include rules and settings for code style, formatting, and best practices.
-
 ## ESLint Configuration
 
 This ESLint configuration:
@@ -309,6 +306,7 @@ This ESLint configuration:
     -   `node_modules/**`
     -   `doc/**`
     -   `build/**`
+    -   `dist/**`
 
 -   Overrides configurations for specific file patterns:
 
