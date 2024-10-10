@@ -18,22 +18,20 @@ npm install stijnklomp-linting-formatting-config --save-dev
 
 ##### Required Dependencies
 
--   `eslint`: ^8.57.0
+-   `eslint`
 
 ##### Peer Dependencies
 
 Peer dependencies are packages that the project expects to be provided by the consumer (the user or another package). They are not installed automatically and must be manually installed.
 
--   `@types/jest`: ^29.5.12
--   `eslint-config-airbnb`: ^19.0.4
--   `eslint-config-airbnb-typescript`: ^17.1.0
--   `eslint-plugin-import`: ^2.29.1
--   `eslint-plugin-jest`: ^27.9.0
--   `eslint-plugin-jsx-a11y`: ^6.8.0
--   `eslint-plugin-prettier`: ^5.1.3
--   `eslint-plugin-react`: ^7.33.2
--   `eslint-plugin-react-hooks`: ^4.6.0
--   `typescript`: ^5.3.3
+-   `@types/jest`
+-   `eslint-plugin-import`
+-   `eslint-plugin-jest`
+-   `eslint-plugin-jsx-a11y`
+-   `eslint-plugin-prettier`
+-   `eslint-plugin-react`
+-   `eslint-plugin-react-hooks`
+-   `typescript`
 
 Use the following to install all peer dependencies not marked as optional:
 
@@ -45,7 +43,6 @@ npx install-peerdeps --dev @stijnklomp/linting-formatting-config --only-peers
 
 The following peer dependencies are optional:
 
--   `eslint-config-airbnb-typescript`
 -   `eslint-plugin-jest`
 -   `eslint-plugin-jsx-a11y`
 -   `eslint-plugin-react`

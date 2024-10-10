@@ -1,12 +1,20 @@
 {
-	"type": "commonjs",
 	"name": "stijnklomp-linting-formatting-config",
-	"description": "Linting and formatting configuration for Typescript projects.",
-	"version": "6.10.0",
+	"description": "Linting and formatting configuration for Typescript projects using typescript-eslint.",
+	"version": "7.0.0",
 	"author": "stijnklomp",
 	"license": "MIT",
-	"main": "eslint.js",
+	"main": "eslintRules.js",
 	"private": false,
+	"scripts": {
+		"build:declaration": "tsc -p declaration.tsconfig.json",
+		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint --allow=neostandard",
+		"build": "npm run clean && npm run build:declaration && npm run build:add-ignores",
+		"lint": "eslint --report-unused-disable-directives .",
+		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
+		"prepare": "husky",
+		"prepublishOnly": "npm run build"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com/stijnklomp/linting-formatting-config.git"
@@ -20,18 +28,22 @@
 		"reactRules.js",
 		"stylelint/stylelint.js",
 		"stylelint/stylelintRules.js",
-		"stylelintRulesMui.js",
 		"typedoc.json",
 		"typescript/tsconfig.base.json",
 		"typescript/typescriptRules.js"
 	],
 	"dependencies": {
-		"eslint": "^9.x"
+		"eslint": "^9.x",
+		"neostandard": "*",
+		"typescript-eslint": "^8.x"
+	},
+	"devDependencies": {
+		"eslint-plugin-jsonc": "^2.16.0",
+		"eslint-plugin-markdown": "^5.1.0",
+		"eslint-plugin-yml": "^1.14.0"
 	},
 	"peerDependencies": {
 		"@types/jest": "*",
-		"eslint-config-airbnb": "*",
-		"eslint-config-airbnb-typescript": "*",
 		"eslint-plugin-import": "*",
 		"eslint-plugin-jest": "*",
 		"eslint-plugin-jsx-a11y": "*",
@@ -41,9 +53,6 @@
 		"typescript": ">=5.x"
 	},
 	"peerDependenciesMeta": {
-		"eslint-config-airbnb-typescript": {
-			"optional": true
-		},
 		"eslint-plugin-jest": {
 			"optional": true
 		},
@@ -63,8 +72,5 @@
 	"bugs": {
 		"url": "https://github.com/stijnklomp/linting-formatting-config/issues"
 	},
-	"homepage": "https://github.com/stijnklomp/linting-formatting-config#readme",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	}
+	"homepage": "https://github.com/stijnklomp/linting-formatting-config#readme"
 }

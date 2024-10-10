@@ -1,14 +1,14 @@
-module.exports = {
+export default {
 	rules: {
 		"selector-class-pattern": [
-			"Mui.*|^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
+			"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
 			{
 				message: (selector) =>
 					`Expected class selector "${selector}" to be of BEM convention with camel case`,
 			},
 		],
 		"selector-id-pattern": [
-			"Mui.*|^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
+			"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
 			{
 				message: (selector) =>
 					`Expected id selector "${selector}" to be of BEM convention with camel case`,
@@ -16,7 +16,7 @@ module.exports = {
 		],
 		"color-no-invalid-hex": true,
 		"custom-property-pattern": [
-			"Mui.*|^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
+			"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
 			{
 				message: (selector) =>
 					`Expected design token "${selector}" to be of BEM convention with camel case`,
@@ -29,7 +29,7 @@ module.exports = {
 			},
 		],
 		"scss/dollar-variable-pattern": [
-			"Mui.*|^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
+			"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
 			{
 				message: (selector) =>
 					`Expected dollar variable pattern "${selector}" to be of BEM convention with camel case`,
