@@ -20,32 +20,21 @@
 		"url": "git+ssh://git@github.com/stijnklomp/linting-formatting-config.git"
 	},
 	"files": [
+		"index.js",
 		".editorconfig",
-		"eslintRules.js",
-		"jestRules.js",
-		"prettier/prettier.js",
-		"prettier/prettierRules.js",
-		"reactRules.js",
-		"stylelint/stylelint.js",
-		"stylelint/stylelintRules.js",
-		"typedoc.json",
-		"typescript/tsconfig.base.json",
-		"typescript/typescriptRules.js"
+		"configs/**/*",
+		"rules/**/*"
 	],
 	"dependencies": {
 		"eslint": "^9.x",
-		"neostandard": "*",
-		"typescript-eslint": "^8.x"
-	},
-	"devDependencies": {
-		"eslint-plugin-jsonc": "^2.16.0",
-		"eslint-plugin-markdown": "^5.1.0",
-		"eslint-plugin-yml": "^1.14.0"
+		"typescript-eslint": "^8.x",
+		"@eslint/js": "^9.x",
+		"eslint-plugin-jsonc": "^2.x",
+		"eslint-plugin-yml": "^1.x"
 	},
 	"peerDependencies": {
-		"@types/jest": "*",
-		"eslint-plugin-import": "*",
 		"eslint-plugin-jest": "*",
+		"eslint-plugin-markdown": "*",
 		"eslint-plugin-jsx-a11y": "*",
 		"eslint-plugin-prettier": "*",
 		"eslint-plugin-react": "*",
@@ -53,6 +42,9 @@
 		"typescript": ">=5.x"
 	},
 	"peerDependenciesMeta": {
+		"eslint-plugin-markdown": {
+			"optional": true
+		},
 		"eslint-plugin-jest": {
 			"optional": true
 		},

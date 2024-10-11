@@ -1,7 +1,6 @@
 import eslintPluginYml from "eslint-plugin-yml";
 
 import { ConfigArray } from "./variables";
-import type { TSESLint } from "@typescript-eslint/utils";
 
 export const configYml: ConfigArray = eslintPluginYml.configs[
 	"flat/recommended"

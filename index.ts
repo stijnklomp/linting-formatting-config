@@ -17,11 +17,10 @@ import { configTypescript } from "./configs/typescript";
 const defaultConfigs = {
 	// Include all available configs either set to `true` or `false`
 	// -- Beginning of configs -- \\
-	json: true,
 	stylistic: true,
-	tseslint: true,
-	yml: true,
+	jest: true,
 	markdownCodeBlocks: true,
+	jxs: false,
 	// ----- End of configs ----- \\
 	includeRemainder: false,
 };
@@ -30,6 +29,7 @@ const containsBothJsAndTs = [
 	"stylistic",
 	"tseslint",
 ];
+const mandatoryConfigs = ["tseslint", "eslintJs", "json", "yml"];
 
 export type ProvidedConfigOptions = typeof defaultConfigs;
 
@@ -65,6 +65,10 @@ export const config = (
 	const includedConfigs: Partial<UsedConfigs> = {};
 	const allConfigs = { defaultConfigs };
 	delete allConfigs["includeRemainder"];
+
+	for (let i = 0, ii = mandatoryConfigs.length; i < ii; i++) {
+		includedConfigs[mandatoryConfigs[i]] = true;
+	}
 
 	for (const [k, v] of Object.entries(configs)) {
 		if (k === "includeRemainder") continue;
