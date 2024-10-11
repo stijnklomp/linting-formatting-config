@@ -1,3 +1,3 @@
-import { ConfigArray } from "./variables.js";
+import { ConfigArray } from "../variables.js";
 
 export const configJsx: ConfigArray = [{}];

@@ -1,7 +1,7 @@
 import globals from "globals";
 import typescriptEslintParser from "@typescript-eslint/parser";
 
-import { tsFileExts, ConfigArray } from "./variables";
+import { tsFileExts, ConfigArray } from "../variables.js";
 import * as eslintRules from "../rules/eslintRules.js";
 import * as typescriptRules from "../rules/typescript/typescriptRules.js";
 

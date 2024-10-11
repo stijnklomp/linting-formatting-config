@@ -1,6 +1,8 @@
 // import jseslint from "@eslint/js"
 import type { TSESLint } from "@typescript-eslint/utils";
 
+import { ConfigArray } from "./variables";
+
 import {
 	configStylisticJavascript,
 	configStylisticTypescript,
@@ -34,11 +36,9 @@ const mandatoryConfigs = ["tseslint", "eslintJs", "json", "yml"];
 export type ProvidedConfigOptions = typeof defaultConfigs;
 
 type UsedConfigs = Omit<ProvidedConfigOptions, "includeRemainder">;
-type ConfigArray = TSESLint.FlatConfig.ConfigArray;
 
 const retrieveConfig = (key: string, suffix: string): ConfigArray =>
 	window[`config${key.toUpperCase()}`];
-
 const buildConfig = (configs: UsedConfigs): ConfigArray => {
 	const finalConfig: ConfigArray = [];
 
@@ -56,12 +56,26 @@ const buildConfig = (configs: UsedConfigs): ConfigArray => {
 	return finalConfig;
 };
 
-export const config = (
-	configs: Partial<ProvidedConfigOptions> & { includeRemainder: boolean } = {
+type Configs = Partial<ProvidedConfigOptions> & {
+	includeRemainder: boolean;
+};
+export const config = ({
+	configs = {
 		includeRemainder: true,
 	},
 	typescript = true,
-): ConfigArray => {
+	strict = false, // TODO: Implement strict mode
+}:
+	| {
+			configs?: Configs;
+			typescript?: true;
+			strict?: boolean;
+	  }
+	| {
+			configs?: Configs;
+			typescript?: false;
+			strict?: false;
+	  } = {}): ConfigArray => {
 	const includedConfigs: Partial<UsedConfigs> = {};
 	const allConfigs = { defaultConfigs };
 	delete allConfigs["includeRemainder"];
