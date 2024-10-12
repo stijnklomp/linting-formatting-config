@@ -1,44 +1,65 @@
-// import jseslint from "@eslint/js"
-import type { TSESLint } from "@typescript-eslint/utils";
+import { ConfigArray } from "./helper";
 
-import { ConfigArray } from "./variables";
+import { configEslintJs } from "./configs/eslintJs";
+import { configJson } from "./configs/json";
+import { configYml } from "./configs/yml";
+import {
+	configTseslintJavascript,
+	configTseslintTypescript,
+	configTseslintTypescriptStrict,
+} from "./configs/tseslint";
+import { configTypescript } from "./configs/typescript";
 
 import {
 	configStylisticJavascript,
 	configStylisticTypescript,
 } from "./configs/stylistic";
-import {
+import { configMarkdownCodeBlocks } from "./configs/markdownCodeBlocks";
+import { configJest } from "./configs/jest";
+import { configJsx } from "./configs/jsx";
+
+const availableConfigs = {
+	configEslintJs,
 	configTseslintJavascript,
 	configTseslintTypescript,
-} from "./configs/tseslint";
-import { configJson } from "./configs/json";
-import { configYml } from "./configs/yml";
-import { configMarkdownCodeBlocks } from "./configs/markdownCodeBlocks";
-import { configTypescript } from "./configs/typescript";
+	configJson,
+	configYml,
+	configStylisticJavascript,
+	configStylisticTypescript,
+	configMarkdownCodeBlocks,
+	configJest,
+	configJsx,
+};
 
 const defaultConfigs = {
-	// Include all available configs either set to `true` or `false`
-	// -- Beginning of configs -- \\
+	// Include all configs that the user CAN select
+	// Set the value to `true` or `false` based on whether or not it should be included by default
+	jxs: false,
+	markdownCodeBlocks: true,
 	stylistic: true,
 	jest: true,
-	markdownCodeBlocks: true,
-	jxs: false,
-	// ----- End of configs ----- \\
-	includeRemainder: false,
 };
+const mandatoryConfigs = [
+	// Include all configs that the user CANNOT select but are always added
+	"eslintJs",
+	"json",
+	"yml",
+];
 const containsBothJsAndTs = [
 	// Include all configs that have both Javascript AND Typescript
+	// This needs to added in addition to either "defaultConfigs" or "mandatoryConfigs"
 	"stylistic",
 	"tseslint",
 ];
-const mandatoryConfigs = ["tseslint", "eslintJs", "json", "yml"];
 
 export type ProvidedConfigOptions = typeof defaultConfigs;
 
 type UsedConfigs = Omit<ProvidedConfigOptions, "includeRemainder">;
 
+const capitalizeFirstLetter = (string: string): string =>
+	string.charAt(0).toUpperCase() + string.slice(1);
 const retrieveConfig = (key: string, suffix: string): ConfigArray =>
-	window[`config${key.toUpperCase()}`];
+	availableConfigs[`config${capitalizeFirstLetter(key)}${suffix}`];
 const buildConfig = (configs: UsedConfigs): ConfigArray => {
 	const finalConfig: ConfigArray = [];
 
@@ -46,11 +67,13 @@ const buildConfig = (configs: UsedConfigs): ConfigArray => {
 		let suffix = "";
 
 		if (containsBothJsAndTs.includes(key)) {
-			finalConfig.push(...retrieveConfig(key, "Javascript"));
+			const retrievedConfig = retrieveConfig(key, "Javascript");
+			finalConfig.push(...retrievedConfig);
 			suffix = "Typescript";
 		}
 
-		finalConfig.push(...retrieveConfig(key, suffix));
+		const retrievedConfig = retrieveConfig(key, suffix);
+		finalConfig.push(...retrievedConfig);
 	});
 
 	return finalConfig;
@@ -61,10 +84,10 @@ type Configs = Partial<ProvidedConfigOptions> & {
 };
 export const config = ({
 	configs = {
-		includeRemainder: true,
+		includeRemainder: false,
 	},
 	typescript = true,
-	strict = false, // TODO: Implement strict mode
+	strict = false,
 }:
 	| {
 			configs?: Configs;
@@ -77,8 +100,13 @@ export const config = ({
 			strict?: false;
 	  } = {}): ConfigArray => {
 	const includedConfigs: Partial<UsedConfigs> = {};
-	const allConfigs = { defaultConfigs };
-	delete allConfigs["includeRemainder"];
+	const allDefaultConfigs = { ...defaultConfigs };
+	const finalConfig: ConfigArray = [];
+
+	if (typescript) finalConfig.push(...configTypescript);
+	strict
+		? finalConfig.push(...configTseslintTypescriptStrict)
+		: mandatoryConfigs.splice(1, 0, "tseslint");
 
 	for (let i = 0, ii = mandatoryConfigs.length; i < ii; i++) {
 		includedConfigs[mandatoryConfigs[i]] = true;
@@ -87,18 +115,17 @@ export const config = ({
 	for (const [k, v] of Object.entries(configs)) {
 		if (k === "includeRemainder") continue;
 		if (v) includedConfigs[k] = true;
-		delete allConfigs[k];
+		delete allDefaultConfigs[k];
 	}
 
-	Object.keys(allConfigs).forEach((k) => {
-		configs.includeRemainder
-			? (includedConfigs[k] = true)
-			: delete includedConfigs[k];
+	Object.keys(allDefaultConfigs).forEach((k) => {
+		if (allDefaultConfigs[k] || configs.includeRemainder)
+			includedConfigs[k] = true;
 	});
 
-	const finalConfig = buildConfig(includedConfigs as UsedConfigs);
-
-	if (typescript) finalConfig.push(...configTypescript);
+	finalConfig.push(...buildConfig(includedConfigs as UsedConfigs));
 
 	return finalConfig;
 };
+
+export default config;

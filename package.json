@@ -8,7 +8,7 @@
 	"private": false,
 	"scripts": {
 		"build:declaration": "tsc -p declaration.tsconfig.json",
-		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint --allow=neostandard",
+		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
 		"build": "npm run clean && npm run build:declaration && npm run build:add-ignores",
 		"lint": "eslint --report-unused-disable-directives .",
 		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
@@ -31,6 +31,15 @@
 		"@eslint/js": "^9.x",
 		"eslint-plugin-jsonc": "^2.x",
 		"eslint-plugin-yml": "^1.x"
+	},
+	"devDependencies": {
+		"eslint-plugin-jest": "*",
+		"eslint-plugin-markdown": "*",
+		"eslint-plugin-jsx-a11y": "*",
+		"eslint-plugin-prettier": "*",
+		"eslint-plugin-react": "*",
+		"eslint-plugin-react-hooks": "*",
+		"typescript": ">=5.x"
 	},
 	"peerDependencies": {
 		"eslint-plugin-jest": "*",

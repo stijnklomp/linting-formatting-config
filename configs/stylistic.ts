@@ -1,13 +1,18 @@
 import tseslint from "typescript-eslint";
 import typescriptEslintParser from "@typescript-eslint/parser";
 
-import { jsFileExts, tsFileExts, ConfigArray } from "../variables";
+import {
+	jsFileExts,
+	tsFileExts,
+	ConfigArray,
+	appendNameIfExist,
+} from "../helper";
 
 export const configStylisticJavascript: ConfigArray =
 	tseslint.configs.stylistic.map((config) => ({
 		...config,
 		files: jsFileExts,
-		name: "TSEslint stylistic Javascript",
+		name: `TSEslint stylistic Javascript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -21,7 +26,7 @@ export const configStylisticTypescript: ConfigArray =
 	tseslint.configs.stylisticTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
-		name: "TSEslint stylistic Typescript",
+		name: `TSEslint stylistic Typescript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {

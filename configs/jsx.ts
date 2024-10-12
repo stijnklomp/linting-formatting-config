@@ -1,3 +1,7 @@
-import { ConfigArray } from "../variables.js";
+import { ConfigArray } from "../helper.js";
 
-export const configJsx: ConfigArray = [{}];
+export const configJsx: ConfigArray = [
+	{
+		name: "JSX",
+	},
+];
