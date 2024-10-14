@@ -39,6 +39,7 @@
 		"eslint-plugin-prettier": "*",
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
+		"prettier": "*",
 		"typescript": ">=5.x"
 	},
 	"peerDependencies": {
@@ -48,6 +49,7 @@
 		"eslint-plugin-prettier": "*",
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
+		"prettier": "*",
 		"typescript": ">=5.x"
 	},
 	"peerDependenciesMeta": {
