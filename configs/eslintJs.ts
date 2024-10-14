@@ -1,10 +1,10 @@
 import js from "@eslint/js";
 
-import { jsFileExts, ConfigArray } from "../helper.js";
+import { jsFileExts, ConfigArray, suffixPackageName } from "../helper";
 
 export const configEslintJs: ConfigArray = [
 	{
-		name: "@eslint/js",
+		name: `${suffixPackageName} @eslint/js`,
 		files: jsFileExts,
 		rules: js.configs.recommended.rules,
 	},

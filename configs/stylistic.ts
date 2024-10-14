@@ -5,6 +5,7 @@ import {
 	jsFileExts,
 	tsFileExts,
 	ConfigArray,
+	suffixPackageName,
 	appendNameIfExist,
 } from "../helper";
 
@@ -12,7 +13,7 @@ export const configStylisticJavascript: ConfigArray =
 	tseslint.configs.stylistic.map((config) => ({
 		...config,
 		files: jsFileExts,
-		name: `TSEslint stylistic Javascript${appendNameIfExist(config.name)}`,
+		name: `${suffixPackageName} TSEslint stylistic Javascript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -26,7 +27,7 @@ export const configStylisticTypescript: ConfigArray =
 	tseslint.configs.stylisticTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
-		name: `TSEslint stylistic Typescript${appendNameIfExist(config.name)}`,
+		name: `${suffixPackageName} TSEslint stylistic Typescript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {

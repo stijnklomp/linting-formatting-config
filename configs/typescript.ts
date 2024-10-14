@@ -1,9 +1,9 @@
 import globals from "globals";
 import typescriptEslintParser from "@typescript-eslint/parser";
 
-import { tsFileExts, ConfigArray } from "../helper.js";
+import { tsFileExts, ConfigArray, suffixPackageName } from "../helper";
 import * as eslintRules from "../rules/eslintRules.js";
-// import * as typescriptRules from "../rules/typescript/typescriptRules.js";
+import * as typescriptRules from "../rules/typescriptRules.js";
 
 export const configTypescript: ConfigArray = [
 	{
@@ -19,10 +19,10 @@ export const configTypescript: ConfigArray = [
 				...globals.node,
 			},
 		},
-		name: "Typescript",
+		name: `${suffixPackageName} Typescript`,
 		rules: {
 			...eslintRules.default.rules, // Should these rules be applied to Javascript projects as well?
-			// ...typescriptRules.default.overrides[0].rules,
+			...typescriptRules,
 			"@typescript-eslint/unbound-method": "off",
 			"@typescript-eslint/consistent-type-definitions": ["warn", "type"],
 		},

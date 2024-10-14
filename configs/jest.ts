@@ -1,7 +1,7 @@
-import { ConfigArray } from "./variables.js";
+import { ConfigArray, suffixPackageName } from "../helper";
 
 export const configJest: ConfigArray = [
 	{
-		name: "Jest",
+		name: `${suffixPackageName} Jest`,
 	},
 ];

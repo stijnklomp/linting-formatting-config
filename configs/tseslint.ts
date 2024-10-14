@@ -5,6 +5,7 @@ import {
 	jsFileExts,
 	tsFileExts,
 	ConfigArray,
+	suffixPackageName,
 	appendNameIfExist,
 } from "../helper";
 
@@ -12,7 +13,7 @@ export const configTseslintJavascript: ConfigArray =
 	tseslint.configs.recommended.map((config) => ({
 		...config,
 		files: jsFileExts,
-		name: `TSEslint recommended Javascript${appendNameIfExist(config.name)}`,
+		name: `${suffixPackageName} TSEslint recommended Javascript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -26,7 +27,7 @@ export const configTseslintTypescript: ConfigArray =
 	tseslint.configs.recommendedTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
-		name: `TSEslint recommended Typescript${appendNameIfExist(config.name)}`,
+		name: `${suffixPackageName} TSEslint recommended Typescript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {

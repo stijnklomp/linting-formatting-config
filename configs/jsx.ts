@@ -1,7 +1,7 @@
-import { ConfigArray } from "../helper.js";
+import { ConfigArray, suffixPackageName } from "../helper";
 
 export const configJsx: ConfigArray = [
 	{
-		name: "JSX",
+		name: `${suffixPackageName} JSX`,
 	},
 ];
