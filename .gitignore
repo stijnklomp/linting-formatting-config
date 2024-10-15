@@ -1,5 +1,6 @@
 node_modules
 doc
+dist
 
 **/*.d.ts
 **/*.d.ts.map

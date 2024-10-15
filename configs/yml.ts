@@ -1,6 +1,6 @@
 import eslintPluginYml from "eslint-plugin-yml";
 
-import { ConfigArray } from "../helper";
+import { ConfigArray, suffixPackageName } from "../helper.js";
 
 export const configYml: ConfigArray = eslintPluginYml.configs[
 	"flat/recommended"

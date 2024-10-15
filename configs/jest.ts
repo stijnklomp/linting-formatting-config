@@ -1,4 +1,4 @@
-import { ConfigArray, suffixPackageName } from "../helper";
+import { ConfigArray, suffixPackageName } from "../helper.js";
 
 export const configJest: ConfigArray = [
 	{

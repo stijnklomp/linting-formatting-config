@@ -1,22 +1,22 @@
-import { ConfigArray } from "./helper";
+import { ConfigArray } from "./helper.js";
 
-import { configEslintJs } from "./configs/eslintJs";
-import { configJson } from "./configs/json";
-import { configYml } from "./configs/yml";
+import { configEslintJs } from "./configs/eslintJs.js";
+import { configJson } from "./configs/json.js";
+import { configYml } from "./configs/yml.js";
 import {
 	configTseslintJavascript,
 	configTseslintTypescript,
 	configTseslintTypescriptStrict,
-} from "./configs/tseslint";
-import { configTypescript } from "./configs/typescript";
+} from "./configs/tseslint.js";
+import { configTypescript } from "./configs/typescript.js";
 
 import {
 	configStylisticJavascript,
 	configStylisticTypescript,
-} from "./configs/stylistic";
-import { configMarkdownCodeBlocks } from "./configs/markdownCodeBlocks";
-import { configJest } from "./configs/jest";
-import { configJsx } from "./configs/jsx";
+} from "./configs/stylistic.js";
+import { configMarkdownCodeBlocks } from "./configs/markdownCodeBlocks.js";
+import { configJest } from "./configs/jest.js";
+import { configJsx } from "./configs/jsx.js";
 
 const availableConfigs = {
 	configEslintJs,

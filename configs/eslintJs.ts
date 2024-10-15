@@ -1,6 +1,6 @@
 import js from "@eslint/js";
 
-import { jsFileExts, ConfigArray, suffixPackageName } from "../helper";
+import { jsFileExts, ConfigArray, suffixPackageName } from "../helper.js";
 
 export const configEslintJs: ConfigArray = [
 	{

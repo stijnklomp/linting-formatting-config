@@ -1,6 +1,6 @@
 import eslintPluginJsonc from "eslint-plugin-jsonc";
 
-import { ConfigArray, suffixPackageName } from "../helper";
+import { ConfigArray, suffixPackageName } from "../helper.js";
 
 export const configJson: ConfigArray = eslintPluginJsonc.configs[
 	"flat/recommended-with-jsonc"

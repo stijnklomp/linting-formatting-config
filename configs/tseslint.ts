@@ -1,4 +1,5 @@
 import tseslint from "typescript-eslint";
+// @ts-ignore
 import typescriptEslintParser from "@typescript-eslint/parser";
 
 import {
@@ -7,7 +8,7 @@ import {
 	ConfigArray,
 	suffixPackageName,
 	appendNameIfExist,
-} from "../helper";
+} from "../helper.js";
 
 export const configTseslintJavascript: ConfigArray =
 	tseslint.configs.recommended.map((config) => ({
