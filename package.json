@@ -4,14 +4,14 @@
 	"version": "7.0.0",
 	"author": "stijnklomp",
 	"license": "MIT",
-	"main": "eslintRules.js",
+	"main": "./dist/index.js",
 	"private": false,
 	"type": "module",
 	"scripts": {
 		"build:declaration": "tsc -p declaration.tsconfig.json",
 		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
 		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
-		"build": "rm -rf dist && tsc ; cp -r rules dist",
+		"build": "rm -rf dist && tsc && tsc -p declaration.tsconfig.json ; cp -r rules dist",
 		"lint": "eslint --report-unused-disable-directives .",
 		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
 		"prepare": "husky",
@@ -22,10 +22,8 @@
 		"url": "git+ssh://git@github.com/stijnklomp/linting-formatting-config.git"
 	},
 	"files": [
-		"index.js",
-		".editorconfig",
-		"configs/**/*",
-		"rules/**/*"
+		"dist/**/*",
+		".editorconfig"
 	],
 	"dependencies": {
 		"@eslint/js": "^9.x",
@@ -43,7 +41,6 @@
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
 		"prettier": "*",
-		"ts-ignore-import": "^4.0.1",
 		"typescript": ">=5.x"
 	},
 	"peerDependencies": {

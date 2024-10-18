@@ -10,7 +10,7 @@ import {
 	appendNameIfExist,
 } from "../helper.js";
 
-export const configTseslintJavascript: ConfigArray =
+export const configTseslintJavascript = (params: {tsconfigRootDir?: string}): ConfigArray =>
 	tseslint.configs.recommended.map((config) => ({
 		...config,
 		files: jsFileExts,
@@ -24,7 +24,7 @@ export const configTseslintJavascript: ConfigArray =
 		},
 	}));
 
-export const configTseslintTypescript: ConfigArray =
+export const configTseslintTypescript = (params: {tsconfigRootDir?: string}): ConfigArray =>
 	tseslint.configs.recommendedTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
@@ -34,12 +34,12 @@ export const configTseslintTypescript: ConfigArray =
 			parserOptions: {
 				project: "./tsconfig.json",
 				sourceType: "module",
-				tsconfigRootDir: import.meta.dirname,
+				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
 	}));
 
-export const configTseslintTypescriptStrict: ConfigArray =
+export const configTseslintTypescriptStrict = (params: {tsconfigRootDir?: string}): ConfigArray =>
 	tseslint.configs.strictTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
@@ -49,7 +49,7 @@ export const configTseslintTypescriptStrict: ConfigArray =
 			parserOptions: {
 				project: "./tsconfig.json",
 				sourceType: "module",
-				tsconfigRootDir: import.meta.dirname,
+				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
 	}));

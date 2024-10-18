@@ -1,3 +1,3 @@
-import config from "configs/prettier"
+import { configPrettier } from "./configs/prettier.js"
 
-export default config
+export default configPrettier

@@ -6,7 +6,7 @@ import { tsFileExts, ConfigArray, suffixPackageName } from "../helper.js";
 import * as eslintRules from "../rules/eslintRules.js";
 import * as typescriptRules from "../rules/typescriptRules.js";
 
-export const configTypescript: ConfigArray = [
+export const configTypescript = (params: {tsconfigRootDir?: string}): ConfigArray => [
 	{
 		files: tsFileExts,
 		languageOptions: {
@@ -15,7 +15,7 @@ export const configTypescript: ConfigArray = [
 				project: "./tsconfig.json",
 				sourceType: "module",
 				// tsconfigRootDir: import.meta.dirname,
-				tsconfigRootDir: "",
+				tsconfigRootDir: params.tsconfigRootDir,
 			},
 			globals: {
 				...globals.node,

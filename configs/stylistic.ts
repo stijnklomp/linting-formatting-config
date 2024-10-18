@@ -10,7 +10,7 @@ import {
 	appendNameIfExist,
 } from "../helper.js";
 
-export const configStylisticJavascript: ConfigArray =
+export const configStylisticJavascript = (params: {tsconfigRootDir?: string}): ConfigArray =>
 	tseslint.configs.stylistic.map((config) => ({
 		...config,
 		files: jsFileExts,
@@ -24,7 +24,7 @@ export const configStylisticJavascript: ConfigArray =
 		},
 	}));
 
-export const configStylisticTypescript: ConfigArray =
+export const configStylisticTypescript = (params: {tsconfigRootDir?: string}): ConfigArray =>
 	tseslint.configs.stylisticTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
@@ -34,7 +34,7 @@ export const configStylisticTypescript: ConfigArray =
 			parserOptions: {
 				project: "./tsconfig.json",
 				sourceType: "module",
-				tsconfigRootDir: import.meta.dirname,
+				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
 	}));

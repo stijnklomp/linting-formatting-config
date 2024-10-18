@@ -58,9 +58,11 @@ type UsedConfigs = Omit<ProvidedConfigOptions, "includeRemainder">;
 
 const capitalizeFirstLetter = (string: string): string =>
 	string.charAt(0).toUpperCase() + string.slice(1);
-const retrieveConfig = (key: string, suffix: string): ConfigArray =>
+const retrieveConfig = (key: string, suffix: string): (params: {
+    tsconfigRootDir?: string;
+}) => ConfigArray =>
 	availableConfigs[`config${capitalizeFirstLetter(key)}${suffix}`];
-const buildConfig = (configs: UsedConfigs): ConfigArray => {
+const buildConfig = (configs: UsedConfigs, tsconfigRootDir: string): ConfigArray => {
 	const finalConfig: ConfigArray = [];
 
 	Object.keys(configs).forEach((key) => {
@@ -68,12 +70,12 @@ const buildConfig = (configs: UsedConfigs): ConfigArray => {
 
 		if (containsBothJsAndTs.includes(key)) {
 			const retrievedConfig = retrieveConfig(key, "Javascript");
-			finalConfig.push(...retrievedConfig);
+			finalConfig.push(...retrievedConfig({tsconfigRootDir}));
 			suffix = "Typescript";
 		}
 
 		const retrievedConfig = retrieveConfig(key, suffix);
-		finalConfig.push(...retrievedConfig);
+		finalConfig.push(...retrievedConfig({tsconfigRootDir}));
 	});
 
 	return finalConfig;
@@ -88,24 +90,27 @@ export const config = ({
 	},
 	typescript = true,
 	strict = false,
+	tsconfigRootDir = "."
 }:
 	| {
 			configs?: Configs;
 			typescript?: true;
 			strict?: boolean;
+			tsconfigRootDir?: string
 	  }
 	| {
 			configs?: Configs;
 			typescript?: false;
 			strict?: false;
+			tsconfigRootDir?: undefined
 	  } = {}): ConfigArray => {
 	const includedConfigs: Partial<UsedConfigs> = {};
 	const allDefaultConfigs = { ...defaultConfigs };
 	const finalConfig: ConfigArray = [];
 
-	if (typescript) finalConfig.push(...configTypescript);
+	if (typescript) finalConfig.push(...configTypescript({tsconfigRootDir}));
 	strict
-		? finalConfig.push(...configTseslintTypescriptStrict)
+		? finalConfig.push(...configTseslintTypescriptStrict({tsconfigRootDir}))
 		: mandatoryConfigs.splice(1, 0, "tseslint");
 
 	for (let i = 0, ii = mandatoryConfigs.length; i < ii; i++) {
@@ -123,7 +128,7 @@ export const config = ({
 			includedConfigs[k] = true;
 	});
 
-	finalConfig.push(...buildConfig(includedConfigs as UsedConfigs));
+	finalConfig.push(...buildConfig(includedConfigs as UsedConfigs, tsconfigRootDir));
 
 	return finalConfig;
 };
