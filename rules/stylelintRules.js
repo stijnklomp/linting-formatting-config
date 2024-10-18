@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	rules: {
 		"selector-class-pattern": [
 			"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",

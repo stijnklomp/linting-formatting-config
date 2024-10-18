@@ -1,0 +1,51 @@
+// {
+// 	"compileOnSave": false,
+// 	"compilerOptions": {
+// 		"allowJs": true,
+// 		"allowSyntheticDefaultImports": true,
+// 		"baseUrl": ".",
+// 		"declaration": true,
+// 		"esModuleInterop": true,
+// 		"forceConsistentCasingInFileNames": true,
+// 		"incremental": true,
+// 		"isolatedModules": true,
+// 		"lib": ["ESNext"],
+// 		"listEmittedFiles": false,
+// 		"listFiles": false,
+// 		"module": "ES6",
+// 		"moduleResolution": "Node",
+// 		"newLine": "lf",
+// 		"noFallthroughCasesInSwitch": false,
+// 		"noImplicitAny": false,
+// 		"noUnusedLocals": false,
+// 		"noUnusedParameters": false,
+// 		"pretty": true,
+// 		"removeComments": true,
+// 		"resolveJsonModule": true,
+// 		"skipLibCheck": true,
+// 		"sourceMap": true,
+// 		"strict": true,
+// 		"strictBindCallApply": true,
+// 		"strictNullChecks": true,
+// 		"target": "ES6",
+// 		"traceResolution": false,
+// 		"outDir": "dist"
+// 	},
+// 	"include": ["."],
+// 	"exclude": ["node_modules", ".husky", "dist", ""]
+// }
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"moduleResolution": "Node",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true,
+		"outDir": "./dist",
+		"declaration": false,
+		"target": "ESNext",
+		"module": "ESNext"
+	},
+	"include": ["."],
+	"exclude": ["node_modules", ".husky", "dist", ""]
+}
