@@ -11,7 +11,7 @@
 		"build:declaration": "tsc -p declaration.tsconfig.json",
 		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
 		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
-		"build": "rm -rf dist && tsc && tsc -p declaration.tsconfig.json ; cp -r rules dist",
+		"build": "rm -rf dist && tsc ; tsc -p declaration.tsconfig.json",
 		"lint": "eslint --report-unused-disable-directives .",
 		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
 		"prepare": "husky",
@@ -28,12 +28,12 @@
 	"dependencies": {
 		"@eslint/js": "^9.x",
 		"eslint": "^9.x",
-		"eslint-plugin-jsonc": "^2.x",
-		"eslint-plugin-yml": "^1.x",
+		"eslint-plugin-jsonc": ">=2.x",
+		"eslint-plugin-yml": ">=1.x",
 		"typescript-eslint": "^8.x"
 	},
 	"devDependencies": {
-		"@typescript-eslint/parser": "^8.9.0",
+		"@typescript-eslint/parser": "^8.x",
 		"eslint-plugin-jest": "*",
 		"eslint-plugin-jsx-a11y": "*",
 		"eslint-plugin-markdown": "*",
@@ -41,6 +41,7 @@
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
 		"prettier": "*",
+		"stylelint": "*",
 		"typescript": ">=5.x"
 	},
 	"peerDependencies": {
@@ -51,6 +52,7 @@
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
 		"prettier": "*",
+		"stylelint": "*",
 		"typescript": ">=5.x"
 	},
 	"peerDependenciesMeta": {

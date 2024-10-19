@@ -1,4 +1,4 @@
-import { ConfigArray } from "./helper.js";
+import { ConfigArray, Config } from "./helper.js";
 
 import { configEslintJs } from "./configs/eslintJs.js";
 import { configJson } from "./configs/json.js";
@@ -54,14 +54,16 @@ const containsBothJsAndTs = [
 
 export type ProvidedConfigOptions = typeof defaultConfigs;
 
-type UsedConfigs = Omit<ProvidedConfigOptions, "includeRemainder">;
+// type UsedConfigs = Omit<ProvidedConfigOptions, "includeRemainder">;
+type UsedConfigs = Record<string, boolean>
 
 const capitalizeFirstLetter = (string: string): string =>
 	string.charAt(0).toUpperCase() + string.slice(1);
 const retrieveConfig = (key: string, suffix: string): (params: {
     tsconfigRootDir?: string;
 }) => ConfigArray =>
-	availableConfigs[`config${capitalizeFirstLetter(key)}${suffix}`];
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
+	(availableConfigs as Record<string, any>)[`config${capitalizeFirstLetter(key)}${suffix}`];
 const buildConfig = (configs: UsedConfigs, tsconfigRootDir: string): ConfigArray => {
 	const finalConfig: ConfigArray = [];
 
@@ -81,9 +83,14 @@ const buildConfig = (configs: UsedConfigs, tsconfigRootDir: string): ConfigArray
 	return finalConfig;
 };
 
+const ignoresConfig: Config = {
+    ignores: ["dist/*"]
+}
+
 type Configs = Partial<ProvidedConfigOptions> & {
 	includeRemainder: boolean;
 };
+
 export const config = ({
 	configs = {
 		includeRemainder: false,
@@ -105,13 +112,14 @@ export const config = ({
 			tsconfigRootDir?: undefined
 	  } = {}): ConfigArray => {
 	const includedConfigs: Partial<UsedConfigs> = {};
-	const allDefaultConfigs = { ...defaultConfigs };
+	const allDefaultConfigs: UsedConfigs = { ...defaultConfigs };
 	const finalConfig: ConfigArray = [];
 
-	if (typescript) finalConfig.push(...configTypescript({tsconfigRootDir}));
 	strict
 		? finalConfig.push(...configTseslintTypescriptStrict({tsconfigRootDir}))
 		: mandatoryConfigs.splice(1, 0, "tseslint");
+
+	if (typescript) finalConfig.push(...configTypescript({tsconfigRootDir}));
 
 	for (let i = 0, ii = mandatoryConfigs.length; i < ii; i++) {
 		includedConfigs[mandatoryConfigs[i]] = true;
@@ -119,7 +127,9 @@ export const config = ({
 
 	for (const [k, v] of Object.entries(configs)) {
 		if (k === "includeRemainder") continue;
+
 		if (v) includedConfigs[k] = true;
+		// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 		delete allDefaultConfigs[k];
 	}
 
@@ -129,6 +139,8 @@ export const config = ({
 	});
 
 	finalConfig.push(...buildConfig(includedConfigs as UsedConfigs, tsconfigRootDir));
+
+	finalConfig.push(ignoresConfig);
 
 	return finalConfig;
 };

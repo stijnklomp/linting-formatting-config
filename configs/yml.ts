@@ -2,7 +2,7 @@ import eslintPluginYml from "eslint-plugin-yml";
 
 import { ConfigArray, suffixPackageName } from "../helper.js";
 
-export const configYml = (params: {tsconfigRootDir?: string}): ConfigArray => eslintPluginYml.configs[
+export const configYml = (_params: {tsconfigRootDir?: string}): ConfigArray => eslintPluginYml.configs[
 	"flat/recommended"
 ].map((config) => ({
 	...config,

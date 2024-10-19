@@ -1,15 +1,13 @@
-export default {
-	"import/extensions": "off",
-	"import/prefer-default-export": "off",
-	camelcase: [
-		"error",
-		{
-			properties: "always",
-			ignoreDestructuring: true,
-		},
-	],
-	"no-unused-vars": ["error", { ignoreRestSiblings: true }],
+import { ConfigRules } from "../helper"
+
+const rules: ConfigRules =  {
+	"no-unused-vars": "off",
+	"no-unused-expressions": "off",
 	"no-mixed-spaces-and-tabs": "off",
+	"prefer-arrow-callback": [
+		"error",
+		{ allowNamedFunctions: false, allowUnboundThis: false },
+	],
 	"padding-line-between-statements": [
 		"error",
 		{
@@ -36,19 +34,14 @@ export default {
 		"functionexpression",
 		"functiondeclaration",
 	],
-	"no-class-assign": "error",
 	"no-confusing-arrow": "off",
-	"no-dupe-class-members": "error",
-	"no-duplicate-imports": ["error", { includeExports: false }],
+	"no-duplicate-imports": "error",
 	"no-this-before-super": "error",
 	"no-var": "error",
-	"prefer-arrow-callback": [
-		"error",
-		{ allowNamedFunctions: false, allowUnboundThis: false },
-	],
 	"prefer-const": [
 		"error",
 		{ ignoreReadBeforeAssign: false, destructuring: "any" },
 	],
-	"@typescript-eslint/no-unnecessary-condition": "error",
 };
+
+export default rules;

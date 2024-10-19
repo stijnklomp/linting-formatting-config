@@ -1,6 +1,6 @@
 import { ConfigArray, suffixPackageName } from "../helper.js";
 
-export const configJsx = (params: {tsconfigRootDir?: string}): ConfigArray => [
+export const configJsx = (_params: {tsconfigRootDir?: string}): ConfigArray => [
 	{
 		name: `${suffixPackageName} JSX`,
 	},

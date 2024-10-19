@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import tseslint from "typescript-eslint";
-// @ts-ignore
 import typescriptEslintParser from "@typescript-eslint/parser";
 
 import {
@@ -10,7 +10,7 @@ import {
 	appendNameIfExist,
 } from "../helper.js";
 
-export const configTseslintJavascript = (params: {tsconfigRootDir?: string}): ConfigArray =>
+export const configTseslintJavascript = (_params: {tsconfigRootDir?: string}): ConfigArray =>
 	tseslint.configs.recommended.map((config) => ({
 		...config,
 		files: jsFileExts,
