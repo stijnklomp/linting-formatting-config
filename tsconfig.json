@@ -15,5 +15,5 @@
 		"skipLibCheck": true
 	},
 	"include": ["."],
-	"exclude": ["node_modules", ".husky", "dist"]
+	"exclude": ["node_modules", ".husky", "./dist/*"]
 }

@@ -1,18 +1,20 @@
 import jest from "eslint-plugin-jest"
 
-import { ConfigArray, suffixPackageName } from "../helper.js";
-import * as jestRules from "../rules/jestRules.js";
+import { ConfigArray, suffixPackageName } from "../helper.js"
+import * as jestRules from "../rules/jestRules.js"
 
-export const configJest = (_params: {tsconfigRootDir?: string}): ConfigArray => [
+export const configJest = (
+	_params: { tsconfigRootDir?: string } = {},
+): ConfigArray => [
 	{
 		name: `${suffixPackageName} Jest`,
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-		...(jest.configs['flat/recommended'] as ConfigArray),
+		...(jest.configs["flat/recommended"] as ConfigArray),
 		files: ["**/*test.[jt]s?(x)", "test/**"],
 		rules: {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-			...(jest.configs['flat/recommended'].rules as object),
+			...(jest.configs["flat/recommended"].rules as object),
 			...jestRules.default,
 		},
-	}
-];
+	},
+]

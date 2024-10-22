@@ -1,6 +1,6 @@
 import { ConfigRules } from "../helper"
 
-const rules: ConfigRules =  {
+const rules: ConfigRules = {
 	"no-unused-vars": "off",
 	"no-unused-expressions": "off",
 	"no-mixed-spaces-and-tabs": "off",
@@ -42,6 +42,6 @@ const rules: ConfigRules =  {
 		"error",
 		{ ignoreReadBeforeAssign: false, destructuring: "any" },
 	],
-};
+}
 
-export default rules;
+export default rules

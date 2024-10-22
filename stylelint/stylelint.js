@@ -7,4 +7,4 @@ module.exports = {
 			customSyntax: "postcss-scss",
 		},
 	],
-};
+}

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import tseslint from "typescript-eslint";
-import typescriptEslintParser from "@typescript-eslint/parser";
+import tseslint from "typescript-eslint"
+import typescriptEslintParser from "@typescript-eslint/parser"
 
 import {
 	jsFileExts,
@@ -8,9 +8,11 @@ import {
 	ConfigArray,
 	suffixPackageName,
 	appendNameIfExist,
-} from "../helper.js";
+} from "../helper.js"
 
-export const configStylisticJavascript = (_params: {tsconfigRootDir?: string}): ConfigArray =>
+export const configStylisticJavascript = (
+	_params: { tsconfigRootDir?: string } = {},
+): ConfigArray =>
 	tseslint.configs.stylistic.map((config) => ({
 		...config,
 		files: jsFileExts,
@@ -22,9 +24,11 @@ export const configStylisticJavascript = (_params: {tsconfigRootDir?: string}): 
 				sourceType: "module",
 			},
 		},
-	}));
+	}))
 
-export const configStylisticTypescript = (params: {tsconfigRootDir?: string}): ConfigArray =>
+export const configStylisticTypescript = (params: {
+	tsconfigRootDir?: string
+}): ConfigArray =>
 	tseslint.configs.stylisticTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
@@ -37,4 +41,4 @@ export const configStylisticTypescript = (params: {tsconfigRootDir?: string}): C
 				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
-	}));
+	}))

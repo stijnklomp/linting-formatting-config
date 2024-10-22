@@ -1,4 +1,4 @@
-import { ConfigRules } from "../helper";
+import { ConfigRules } from "../helper"
 
 const rules: ConfigRules = {
 	"@typescript-eslint/no-unused-vars": [
@@ -7,8 +7,8 @@ const rules: ConfigRules = {
 			argsIgnorePattern: "^_",
 			varsIgnorePattern: "^_",
 			caughtErrorsIgnorePattern: "^_",
-			ignoreRestSiblings: true
-		}
+			ignoreRestSiblings: true,
+		},
 	],
 	"@typescript-eslint/no-unused-expressions": "off",
 	"@typescript-eslint/no-unnecessary-condition": "error",
@@ -16,6 +16,6 @@ const rules: ConfigRules = {
 	"@typescript-eslint/restrict-template-expressions": "warn",
 	"@typescript-eslint/no-explicit-any": "warn",
 	"@typescript-eslint/consistent-type-definitions": ["error", "type"],
-};
+}
 
-export default rules;
+export default rules

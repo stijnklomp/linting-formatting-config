@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import tseslint from "typescript-eslint";
-import typescriptEslintParser from "@typescript-eslint/parser";
+import tseslint from "typescript-eslint"
+import typescriptEslintParser from "@typescript-eslint/parser"
 
 import {
 	jsFileExts,
@@ -8,9 +8,11 @@ import {
 	ConfigArray,
 	suffixPackageName,
 	appendNameIfExist,
-} from "../helper.js";
+} from "../helper.js"
 
-export const configTseslintJavascript = (_params: {tsconfigRootDir?: string}): ConfigArray =>
+export const configTseslintJavascript = (
+	_params: { tsconfigRootDir?: string } = {},
+): ConfigArray =>
 	tseslint.configs.recommended.map((config) => ({
 		...config,
 		files: jsFileExts,
@@ -22,9 +24,11 @@ export const configTseslintJavascript = (_params: {tsconfigRootDir?: string}): C
 				sourceType: "module",
 			},
 		},
-	}));
+	}))
 
-export const configTseslintTypescript = (params: {tsconfigRootDir?: string}): ConfigArray =>
+export const configTseslintTypescript = (params: {
+	tsconfigRootDir?: string
+}): ConfigArray =>
 	tseslint.configs.recommendedTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
@@ -37,9 +41,11 @@ export const configTseslintTypescript = (params: {tsconfigRootDir?: string}): Co
 				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
-	}));
+	}))
 
-export const configTseslintTypescriptStrict = (params: {tsconfigRootDir?: string}): ConfigArray =>
+export const configTseslintTypescriptStrict = (params: {
+	tsconfigRootDir?: string
+}): ConfigArray =>
 	tseslint.configs.strictTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
@@ -52,4 +58,4 @@ export const configTseslintTypescriptStrict = (params: {tsconfigRootDir?: string
 				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
-	}));
+	}))

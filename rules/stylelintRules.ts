@@ -1,4 +1,4 @@
-import { Config } from "stylelint";
+import { Config } from "stylelint"
 
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 const rules: Config["rules"] = {
@@ -37,6 +37,6 @@ const rules: Config["rules"] = {
 				`Expected dollar variable pattern "${selector}" to be of BEM convention with camel case`,
 		},
 	],
-};
+}
 
-export default rules;
+export default rules
