@@ -39,6 +39,7 @@ const defaultConfigs = {
 	markdownCodeBlocks: true,
 	stylistic: true,
 	jest: true,
+	react: false,
 }
 const mandatoryConfigs = [
 	// Include all configs that the user CANNOT select but are always added
