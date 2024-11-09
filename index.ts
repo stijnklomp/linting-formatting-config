@@ -20,7 +20,6 @@ import { configJest } from "./configs/jest.js"
 import { configJsx } from "./configs/jsx.js"
 
 const availableConfigs = {
-	configEslintJs,
 	configTseslintJavascript,
 	configTseslintTypescript,
 	configJson,
@@ -43,7 +42,6 @@ const defaultConfigs = {
 }
 const mandatoryConfigs = [
 	// Include all configs that the user CANNOT select but are always added
-	"eslintJs",
 	"json",
 	"yml",
 ]
@@ -95,7 +93,7 @@ const ignoresConfig: Config = {
 	ignores: ["dist/*"],
 }
 
-type Configs = Partial<ProvidedConfigOptions> & {
+export type Configs = Partial<ProvidedConfigOptions> & {
 	includeRemainder: boolean
 }
 
@@ -129,7 +127,11 @@ export const config = ({
 			)
 		: mandatoryConfigs.splice(1, 0, "tseslint")
 
-	if (typescript) finalConfig.push(...configTypescript({ tsconfigRootDir }))
+	if (typescript) {
+		finalConfig.push(...configTypescript({ tsconfigRootDir }))
+	} else {
+		finalConfig.push(...configEslintJs({ tsconfigRootDir }))
+	}
 
 	for (let i = 0, ii = mandatoryConfigs.length; i < ii; i++) {
 		includedConfigs[mandatoryConfigs[i]] = true

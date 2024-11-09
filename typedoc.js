@@ -1,3 +1,3 @@
-import { typedocSettings } from "./configs/typedoc.js"
+import { typedocSettings } from "./settings/typedoc.js"
 
 export default typedocSettings

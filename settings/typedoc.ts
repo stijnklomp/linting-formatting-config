@@ -1,5 +1,5 @@
 export const typedocSettings = {
-	// "entryPointStrategy": "expand",
+	entryPointStrategy: "expand",
 	out: "docs/code",
 	theme: "default",
 	includeVersion: true,
