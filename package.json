@@ -11,7 +11,7 @@
 		"build:declaration": "tsc -p declaration.tsconfig.json",
 		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
 		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
-		"build": "rm -rf dist && tsc ; tsc -p declaration.tsconfig.json",
+		"build": "rm -rf dist && tsc -p declaration.tsconfig.json",
 		"lint": "eslint --report-unused-disable-directives .",
 		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
 		"prepare": "husky",
@@ -42,6 +42,9 @@
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
 		"prettier": "*",
+		"sass": "*",
+		"stylelint-config-standard-scss": "*",
+		"stylelint-config-prettier-scss": "*",
 		"stylelint": "*",
 		"typescript": ">=5.x"
 	},
@@ -52,6 +55,9 @@
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
 		"prettier": "*",
+		"sass": "*",
+		"stylelint-config-standard-scss": "*",
+		"stylelint-config-prettier-scss": "*",
 		"stylelint": "*",
 		"typescript": ">=5.x"
 	},
@@ -69,6 +75,18 @@
 			"optional": true
 		},
 		"eslint-plugin-react-hooks": {
+			"optional": true
+		},
+		"sass": {
+			"optional": true
+		},
+		"stylelint-config-standard-scss": {
+			"optional": true
+		},
+		"stylelint-config-prettier-scss": {
+			"optional": true
+		},
+		"stylelint": {
 			"optional": true
 		},
 		"typescript": {
