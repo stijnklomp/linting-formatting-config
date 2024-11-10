@@ -10,7 +10,12 @@ export const configJest = (
 		name: `${suffixPackageName} Jest`,
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 		...(jest.configs["flat/recommended"] as ConfigArray),
-		files: ["**/*test.[jt]s?(x)", "test/**"],
+		files: ["**/*test.[jt]s?(x)", "**/*.spec.[jt]s?(x)"],
+		settings: {
+			jest: {
+				version: 27,
+			},
+		},
 		rules: {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			...(jest.configs["flat/recommended"].rules as object),
