@@ -2,7 +2,7 @@ import reactPlugin from "eslint-plugin-react"
 import globals from "globals"
 
 import { ConfigArray, suffixPackageName } from "../helper.js"
-import * as reactRules from "../rules/reactRules.js"
+import * as reactRules from "../rules/react.js"
 
 export const configReact = (
 	_params: { tsconfigRootDir?: string } = {},

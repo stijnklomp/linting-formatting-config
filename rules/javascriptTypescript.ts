@@ -1,9 +1,15 @@
 import { ConfigRules } from "../helper"
 
 const rules: ConfigRules = {
-	"no-unused-vars": "off",
-	"no-unused-expressions": "off",
-	"no-mixed-spaces-and-tabs": "off",
+	"no-mixed-spaces-and-tabs": "error",
+	"no-confusing-arrow": "off",
+	"no-duplicate-imports": "error",
+	"no-this-before-super": "error",
+	"no-var": "error",
+	"prefer-const": [
+		"error",
+		{ ignoreReadBeforeAssign: false, destructuring: "any" },
+	],
 	"prefer-arrow-callback": [
 		"error",
 		{ allowNamedFunctions: false, allowUnboundThis: false },
@@ -33,14 +39,6 @@ const rules: ConfigRules = {
 		},
 		"functionexpression",
 		"functiondeclaration",
-	],
-	"no-confusing-arrow": "off",
-	"no-duplicate-imports": "error",
-	"no-this-before-super": "error",
-	"no-var": "error",
-	"prefer-const": [
-		"error",
-		{ ignoreReadBeforeAssign: false, destructuring: "any" },
 	],
 }
 

@@ -10,7 +10,7 @@ const rules: ConfigRules = {
 			ignoreRestSiblings: true,
 		},
 	],
-	"@typescript-eslint/no-unused-expressions": "off",
+	"@typescript-eslint/no-unused-expressions": "error",
 	"@typescript-eslint/no-unnecessary-condition": "error",
 	"@typescript-eslint/no-inferrable-types": "off",
 	"@typescript-eslint/restrict-template-expressions": "warn",

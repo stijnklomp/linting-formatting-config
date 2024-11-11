@@ -82,10 +82,10 @@ Include the rules that you desire by extending any of the following files:
 ```javascript
 module.exports = {
 	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/eslintRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/jestRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/reactRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescriptRules.js",
+		"./node_modules/stijnklomp-linting-formatting-config/eslint.js",
+		"./node_modules/stijnklomp-linting-formatting-config/jest.js",
+		"./node_modules/stijnklomp-linting-formatting-config/react.js",
+		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescript.js",
 	],
 	parserOptions: {
 		project: "./tsconfig.json",
@@ -103,7 +103,7 @@ To use Stylelint in your project, you need to create a Stylelint configuration f
 module.exports = {
 	extends: [
 		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
-		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelintRules.js",
+		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
 	],
 };
 ```
@@ -128,7 +128,7 @@ You can optionally add linting rules for Prettier by extending the Prettier rule
 module.exports = {
 	plugins: ["prettier"],
 	settings: {
-		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettierRules.js"),
+		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
 	},
 };
 ```
@@ -176,9 +176,9 @@ To use Typedoc in your project, you need to create a Typedoc configuration file 
 module.exports = {
 	root: true,
 	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/eslintRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/jestRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescriptRules.js",
+		"./node_modules/stijnklomp-linting-formatting-config/eslint.js",
+		"./node_modules/stijnklomp-linting-formatting-config/jest.js",
+		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescript.js",
 	],
 	parser: "@typescript-eslint/parser",
 	plugins: ["@typescript-eslint", "prettier"],
@@ -194,7 +194,7 @@ module.exports = {
 		es6: true,
 	},
 	settings: {
-		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettierRules.js"),
+		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
 	},
 };
 ```

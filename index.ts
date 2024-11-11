@@ -9,7 +9,9 @@ import {
 	configTseslintTypescript,
 	configTseslintTypescriptStrict,
 } from "./configs/tseslint.js"
+import { configJavascript } from "./configs/javascript.js"
 import { configTypescript } from "./configs/typescript.js"
+import { configJavascriptTypescript } from "./configs/javascriptTypescript.js"
 
 import {
 	configStylisticJavascript,
@@ -131,7 +133,10 @@ export const config = ({
 		finalConfig.push(...configTypescript({ tsconfigRootDir }))
 	} else {
 		finalConfig.push(...configEslintJs({ tsconfigRootDir }))
+		finalConfig.push(...configJavascript({ tsconfigRootDir }))
 	}
+
+	finalConfig.push(...configJavascriptTypescript({ tsconfigRootDir }))
 
 	for (let i = 0, ii = mandatoryConfigs.length; i < ii; i++) {
 		includedConfigs[mandatoryConfigs[i]] = true

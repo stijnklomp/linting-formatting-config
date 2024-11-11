@@ -1,4 +1,4 @@
-import * as stylelintRules from "../rules/stylelintRules.js"
+import * as stylelintRules from "../rules/stylelint.js"
 
 export const stylelintSettings = {
 	extends: [

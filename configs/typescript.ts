@@ -2,8 +2,8 @@ import globals from "globals"
 import typescriptEslintParser from "@typescript-eslint/parser"
 
 import { tsFileExts, ConfigArray, suffixPackageName } from "../helper.js"
-import * as eslintRules from "../rules/typescriptEslintRules.js"
-import * as typescriptRules from "../rules/typescriptRules.js"
+import * as eslintRules from "../rules/typescriptEslint.js"
+import * as typescriptRules from "../rules/typescript.js"
 
 export const configTypescript = (params: {
 	tsconfigRootDir?: string

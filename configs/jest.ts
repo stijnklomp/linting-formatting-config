@@ -1,7 +1,7 @@
 import jest from "eslint-plugin-jest"
 
 import { ConfigArray, suffixPackageName } from "../helper.js"
-import * as jestRules from "../rules/jestRules.js"
+import * as jestRules from "../rules/jest.js"
 
 export const configJest = (
 	_params: { tsconfigRootDir?: string } = {},
