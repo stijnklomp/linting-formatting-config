@@ -1,11 +1,11 @@
 export const typedocSettings = {
 	entryPointStrategy: "expand",
-	out: "docs/code",
-	theme: "default",
+	excludePrivate: true,
 	includeVersion: true,
+	out: "docs/code",
+	readme: "README.md",
+	theme: "default",
 	validation: {
 		invalidLink: true,
 	},
-	readme: "README.md",
-	excludePrivate: true,
 }

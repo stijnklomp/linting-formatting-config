@@ -1,22 +1,23 @@
 export const prettierSettings = {
-	tabWidth: 4,
-	useTabs: true,
-	semi: false,
-	singleQuote: false,
-	jsxSingleQuote: false,
-	trailingComma: "all",
-	bracketSpacing: true,
-	bracketSameLine: true,
 	arrowParens: "always",
-	insertPragma: false,
+	bracketSameLine: true,
+	bracketSpacing: true,
 	htmlWhitespaceSensitivity: "css",
+	insertPragma: false,
+	jsxSingleQuote: false,
 	overrides: [
 		{
 			files: ["**/*.{yml,yaml}"],
 			options: {
-				useTabs: false,
 				tabWidth: 2,
+				useTabs: false,
 			},
 		},
 	],
+	plugins: ["prettier-plugin-packagejson"],
+	semi: false,
+	singleQuote: false,
+	tabWidth: 4,
+	trailingComma: "all",
+	useTabs: true,
 }

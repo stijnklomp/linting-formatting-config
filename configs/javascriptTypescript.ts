@@ -11,8 +11,8 @@ export const configJavascriptTypescript = (_params: {
 	tsconfigRootDir?: string
 }): ConfigArray => [
 	{
-		name: `${suffixPackageName} Javascript`,
 		files: [...jsFileExts, ...tsFileExts],
+		name: `${suffixPackageName} Javascript`,
 		rules: javascriptTypescriptRules.default,
 	},
 ]

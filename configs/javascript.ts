@@ -6,8 +6,8 @@ export const configJavascript = (_params: {
 	tsconfigRootDir?: string
 }): ConfigArray => [
 	{
-		name: `${suffixPackageName} Javascript`,
 		files: jsFileExts,
+		name: `${suffixPackageName} Javascript`,
 		rules: javascriptRules.default,
 	},
 ]

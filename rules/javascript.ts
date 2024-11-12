@@ -1,16 +1,17 @@
 import { ConfigRules } from "../helper"
 
 const rules: ConfigRules = {
+	camelcase: "error",
+	"no-unused-expressions": "error",
 	"no-unused-vars": [
 		"error",
 		{
 			argsIgnorePattern: "^_",
-			varsIgnorePattern: "^_",
 			caughtErrorsIgnorePattern: "^_",
 			ignoreRestSiblings: true,
+			varsIgnorePattern: "^_",
 		},
 	],
-	"no-unused-expressions": "error",
 }
 
 export default rules

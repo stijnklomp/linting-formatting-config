@@ -16,7 +16,6 @@ export const configTseslintJavascript = (
 	tseslint.configs.recommended.map((config) => ({
 		...config,
 		files: jsFileExts,
-		name: `${suffixPackageName} TSEslint recommended Javascript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -24,6 +23,7 @@ export const configTseslintJavascript = (
 				sourceType: "module",
 			},
 		},
+		name: `${suffixPackageName} TSEslint recommended Javascript${appendNameIfExist(config.name)}`,
 	}))
 
 export const configTseslintTypescript = (params: {
@@ -32,7 +32,6 @@ export const configTseslintTypescript = (params: {
 	tseslint.configs.recommendedTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
-		name: `${suffixPackageName} TSEslint recommended Typescript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -41,6 +40,7 @@ export const configTseslintTypescript = (params: {
 				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
+		name: `${suffixPackageName} TSEslint recommended Typescript${appendNameIfExist(config.name)}`,
 	}))
 
 export const configTseslintTypescriptStrict = (params: {
@@ -49,7 +49,6 @@ export const configTseslintTypescriptStrict = (params: {
 	tseslint.configs.strictTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
-		name: `TSEslint recommended Typescript strict${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -58,4 +57,5 @@ export const configTseslintTypescriptStrict = (params: {
 				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
+		name: `TSEslint recommended Typescript strict${appendNameIfExist(config.name)}`,
 	}))

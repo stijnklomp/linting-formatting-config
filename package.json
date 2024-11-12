@@ -1,37 +1,45 @@
 {
 	"name": "stijnklomp-linting-formatting-config",
-	"description": "Linting and formatting configuration for Typescript projects using typescript-eslint.",
 	"version": "7.0.0",
-	"author": "stijnklomp",
-	"license": "MIT",
-	"main": "./dist/index.js",
 	"private": false,
-	"type": "module",
-	"scripts": {
-		"build:declaration": "tsc -p declaration.tsconfig.json",
-		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
-		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
-		"build": "rm -rf dist && tsc -p declaration.tsconfig.json",
-		"lint": "eslint --report-unused-disable-directives .",
-		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
-		"prepare": "husky",
-		"prepublishOnly": "npm run build"
+	"description": "Linting and formatting configuration for Typescript projects using typescript-eslint.",
+	"homepage": "https://github.com/stijnklomp/linting-formatting-config#readme",
+	"bugs": {
+		"url": "https://github.com/stijnklomp/linting-formatting-config/issues"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com/stijnklomp/linting-formatting-config.git"
 	},
+	"license": "MIT",
+	"author": "stijnklomp",
+	"type": "module",
+	"main": "./dist/index.js",
 	"files": [
 		"dist/**/*",
 		".editorconfig"
 	],
+	"scripts": {
+		"build": "rm -rf dist && tsc -p declaration.tsconfig.json",
+		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
+		"build:declaration": "tsc -p declaration.tsconfig.json",
+		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
+		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
+		"lint": "eslint --report-unused-disable-directives . --cache",
+		"lint:fix": "jsonsort -p && eslint --report-unused-disable-directives . --cache --fix",
+		"prepare": "husky",
+		"prepublishOnly": "npm run build"
+	},
 	"dependencies": {
 		"@eslint/js": "^9.x",
 		"eslint": "^9.x",
-		"eslint-plugin-prettier": "*",
 		"eslint-config-prettier": "^9.x",
 		"eslint-plugin-jsonc": ">=2.x",
+		"eslint-plugin-package-json": "*",
+		"eslint-plugin-prettier": "*",
 		"eslint-plugin-yml": ">=1.x",
+		"json-sort-cli": "*",
+		"prettier-plugin-packagejson": "*",
 		"typescript-eslint": "^8.x"
 	},
 	"devDependencies": {
@@ -43,9 +51,9 @@
 		"eslint-plugin-react-hooks": "*",
 		"prettier": "*",
 		"sass": "*",
-		"stylelint-config-standard-scss": "*",
-		"stylelint-config-prettier-scss": "*",
 		"stylelint": "*",
+		"stylelint-config-prettier-scss": "*",
+		"stylelint-config-standard-scss": "*",
 		"typescript": ">=5.x"
 	},
 	"peerDependencies": {
@@ -56,19 +64,19 @@
 		"eslint-plugin-react-hooks": "*",
 		"prettier": "*",
 		"sass": "*",
-		"stylelint-config-standard-scss": "*",
-		"stylelint-config-prettier-scss": "*",
 		"stylelint": "*",
+		"stylelint-config-prettier-scss": "*",
+		"stylelint-config-standard-scss": "*",
 		"typescript": ">=5.x"
 	},
 	"peerDependenciesMeta": {
-		"eslint-plugin-markdown": {
-			"optional": true
-		},
 		"eslint-plugin-jest": {
 			"optional": true
 		},
 		"eslint-plugin-jsx-a11y": {
+			"optional": true
+		},
+		"eslint-plugin-markdown": {
 			"optional": true
 		},
 		"eslint-plugin-react": {
@@ -80,21 +88,17 @@
 		"sass": {
 			"optional": true
 		},
-		"stylelint-config-standard-scss": {
+		"stylelint": {
 			"optional": true
 		},
 		"stylelint-config-prettier-scss": {
 			"optional": true
 		},
-		"stylelint": {
+		"stylelint-config-standard-scss": {
 			"optional": true
 		},
 		"typescript": {
 			"optional": true
 		}
-	},
-	"bugs": {
-		"url": "https://github.com/stijnklomp/linting-formatting-config/issues"
-	},
-	"homepage": "https://github.com/stijnklomp/linting-formatting-config#readme"
+	}
 }

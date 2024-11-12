@@ -1,25 +1,25 @@
 {
 	"compileOnSave": true,
 	"compilerOptions": {
-		"moduleResolution": "Node",
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"allowSyntheticDefaultImports": true,
-		"outDir": "./dist",
-		"declaration": false,
-		"target": "ESNext",
-		"module": "ESNext",
-		"strictNullChecks": true,
-		"strict": true,
 		"allowJs": true,
-		"skipLibCheck": true
+		"allowSyntheticDefaultImports": true,
+		"declaration": false,
+		"esModuleInterop": true,
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"outDir": "./dist",
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"strictNullChecks": true,
+		"target": "ESNext"
 	},
-	"include": ["."],
 	"exclude": [
 		"node_modules",
 		".husky",
 		"./dist/*",
 		"./typedoc.js",
 		"eslint.config.mjs"
-	]
+	],
+	"include": ["."]
 }

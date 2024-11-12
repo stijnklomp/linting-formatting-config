@@ -2,20 +2,6 @@ import { Config } from "stylelint"
 
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 const rules: Config["rules"] = {
-	"selector-class-pattern": [
-		"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
-		{
-			message: (selector: unknown) =>
-				`Expected class selector "${selector}" to be of BEM convention with camel case`,
-		},
-	],
-	"selector-id-pattern": [
-		"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
-		{
-			message: (selector: unknown) =>
-				`Expected id selector "${selector}" to be of BEM convention with camel case`,
-		},
-	],
 	"color-no-invalid-hex": true,
 	"custom-property-pattern": [
 		"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
@@ -35,6 +21,20 @@ const rules: Config["rules"] = {
 		{
 			message: (selector: unknown) =>
 				`Expected dollar variable pattern "${selector}" to be of BEM convention with camel case`,
+		},
+	],
+	"selector-class-pattern": [
+		"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
+		{
+			message: (selector: unknown) =>
+				`Expected class selector "${selector}" to be of BEM convention with camel case`,
+		},
+	],
+	"selector-id-pattern": [
+		"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
+		{
+			message: (selector: unknown) =>
+				`Expected id selector "${selector}" to be of BEM convention with camel case`,
 		},
 	],
 }

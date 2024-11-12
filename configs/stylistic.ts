@@ -16,7 +16,6 @@ export const configStylisticJavascript = (
 	tseslint.configs.stylistic.map((config) => ({
 		...config,
 		files: jsFileExts,
-		name: `${suffixPackageName} TSEslint stylistic Javascript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -24,6 +23,7 @@ export const configStylisticJavascript = (
 				sourceType: "module",
 			},
 		},
+		name: `${suffixPackageName} TSEslint stylistic Javascript${appendNameIfExist(config.name)}`,
 	}))
 
 export const configStylisticTypescript = (params: {
@@ -32,7 +32,6 @@ export const configStylisticTypescript = (params: {
 	tseslint.configs.stylisticTypeChecked.map((config) => ({
 		...config,
 		files: tsFileExts,
-		name: `${suffixPackageName} TSEslint stylistic Typescript${appendNameIfExist(config.name)}`,
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
@@ -41,4 +40,5 @@ export const configStylisticTypescript = (params: {
 				tsconfigRootDir: params.tsconfigRootDir,
 			},
 		},
+		name: `${suffixPackageName} TSEslint stylistic Typescript${appendNameIfExist(config.name)}`,
 	}))

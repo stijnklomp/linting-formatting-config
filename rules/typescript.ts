@@ -1,8 +1,9 @@
 import { ConfigRules } from "../helper"
 
 const rules: ConfigRules = {
-	"no-unused-vars": "off",
+	camelcase: "off",
 	"no-unused-expressions": "off",
+	"no-unused-vars": "off",
 }
 
 export default rules

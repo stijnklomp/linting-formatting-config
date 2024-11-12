@@ -1,10 +1,14 @@
 import { ConfigRules } from "../helper"
 
 const rules: ConfigRules = {
-	"react/display-name": "off",
-	"react/jsx-curly-brace-presence": [
+	"sort-keys": [
 		"error",
-		{ children: "never", props: "never" },
+		"asc",
+		{
+			caseSensitive: true,
+			minKeys: 2,
+			natural: false,
+		},
 	],
 }
 

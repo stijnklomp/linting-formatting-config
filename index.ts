@@ -8,7 +8,7 @@ import {
 	configTseslintJavascript,
 	configTseslintTypescript,
 	configTseslintTypescriptStrict,
-} from "./configs/tseslint.js"
+} from "./configs/typescriptEslint.js"
 import { configJavascript } from "./configs/javascript.js"
 import { configTypescript } from "./configs/typescript.js"
 import { configJavascriptTypescript } from "./configs/javascriptTypescript.js"
@@ -22,25 +22,25 @@ import { configJest } from "./configs/jest.js"
 import { configJsx } from "./configs/jsx.js"
 
 const availableConfigs = {
-	configTseslintJavascript,
-	configTseslintTypescript,
+	configJest,
 	configJson,
-	configYml,
+	configJsx,
+	configMarkdownCodeBlocks,
 	configStylisticJavascript,
 	configStylisticTypescript,
-	configMarkdownCodeBlocks,
-	configJest,
-	configJsx,
+	configTseslintJavascript,
+	configTseslintTypescript,
+	configYml,
 }
 
 const defaultConfigs = {
 	// Include all configs that the user CAN select
 	// Set the value to `true` or `false` based on whether or not it should be included by default
+	jest: true,
 	jxs: false,
 	markdownCodeBlocks: true,
-	stylistic: true,
-	jest: true,
 	react: false,
+	stylistic: true,
 }
 const mandatoryConfigs = [
 	// Include all configs that the user CANNOT select but are always added

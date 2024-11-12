@@ -1,44 +1,49 @@
 import { ConfigRules } from "../helper"
 
 const rules: ConfigRules = {
-	"no-mixed-spaces-and-tabs": "error",
 	"no-confusing-arrow": "off",
+	"no-console": ["warn", { allow: ["warn", "error"] }],
 	"no-duplicate-imports": "error",
+	"no-mixed-spaces-and-tabs": "error",
+	"no-restricted-syntax": [
+		"error",
+		{
+			message: "Unexpected property on console object was called",
+			selector:
+				"CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+		},
+		"functionexpression",
+		"functiondeclaration",
+	],
 	"no-this-before-super": "error",
 	"no-var": "error",
-	"prefer-const": [
+	"padding-line-between-statements": [
 		"error",
-		{ ignoreReadBeforeAssign: false, destructuring: "any" },
+		{
+			blankLine: "always",
+			next: ["export", "class", "function", "try", "if", "return"],
+			prev: "*",
+		},
+		{ blankLine: "always", next: "*", prev: "block-like" },
+		{
+			blankLine: "never",
+			next: ["case", "default"],
+			prev: "block-like",
+		},
+		{ blankLine: "any", next: "export", prev: "export" },
 	],
 	"prefer-arrow-callback": [
 		"error",
 		{ allowNamedFunctions: false, allowUnboundThis: false },
 	],
-	"padding-line-between-statements": [
+	"prefer-const": [
 		"error",
-		{
-			blankLine: "always",
-			prev: "*",
-			next: ["export", "class", "function", "try", "if", "return"],
-		},
-		{ blankLine: "always", prev: "block-like", next: "*" },
-		{
-			blankLine: "never",
-			prev: "block-like",
-			next: ["case", "default"],
-		},
-		{ blankLine: "any", prev: "export", next: "export" },
+		{ destructuring: "any", ignoreReadBeforeAssign: false },
 	],
-	"no-console": ["warn", { allow: ["warn", "error"] }],
-	"no-restricted-syntax": [
+	"sort-keys": [
 		"error",
-		{
-			selector:
-				"CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
-			message: "Unexpected property on console object was called",
-		},
-		"functionexpression",
-		"functiondeclaration",
+		"asc",
+		{ caseSensitive: true, minKeys: 2, natural: false },
 	],
 }
 
