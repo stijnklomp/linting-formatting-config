@@ -14,33 +14,35 @@ You can install the package via npm by running the following command:
 npm install stijnklomp-linting-formatting-config --save-dev
 ```
 
+json-sort-cli
+
 ### Dependencies
 
 ##### Required Dependencies
 
-- `@eslint/js`
-- `eslint`
-- `eslint-plugin-prettier`
-- `eslint-config-prettier`
-- `eslint-plugin-jsonc`
-- `eslint-plugin-yml`
-- `typescript-eslint`
+-   `@eslint/js`
+-   `eslint`
+-   `eslint-plugin-prettier`
+-   `eslint-config-prettier`
+-   `eslint-plugin-jsonc`
+-   `eslint-plugin-yml`
+-   `typescript-eslint`
 
 ##### Peer Dependencies
 
 Peer dependencies are packages that the project expects to be provided by the consumer (the user or another package). They are not installed automatically and must be manually installed.
 
-- `eslint-plugin-jest`
-- `eslint-plugin-jsx-a11y`
-- `eslint-plugin-markdown`
-- `eslint-plugin-react`
-- `eslint-plugin-react-hooks`
-- `prettier`
-- `sass`
-- `stylelint-config-standard-scss`
-- `stylelint-config-prettier-scss`
-- `stylelint`
-- `typescript`
+-   `eslint-plugin-jest`
+-   `eslint-plugin-jsx-a11y`
+-   `eslint-plugin-markdown`
+-   `eslint-plugin-react`
+-   `eslint-plugin-react-hooks`
+-   `prettier`
+-   `sass`
+-   `stylelint-config-standard-scss`
+-   `stylelint-config-prettier-scss`
+-   `stylelint`
+-   `typescript`
 
 Use the following to install all peer dependencies not marked as optional:
 
@@ -52,16 +54,16 @@ npx install-peerdeps --dev @stijnklomp/linting-formatting-config --only-peers
 
 The following peer dependencies are optional:
 
-- `eslint-plugin-markdown`
-- `eslint-plugin-jest`
-- `eslint-plugin-jsx-a11y`
-- `eslint-plugin-react`
-- `eslint-plugin-react-hooks`
-- `sass`
-- `stylelint-config-standard-scssx`
-- `stylelint-config-prettier-scss`
-- `stylelint`
-- `typescript`
+-   `eslint-plugin-markdown`
+-   `eslint-plugin-jest`
+-   `eslint-plugin-jsx-a11y`
+-   `eslint-plugin-react`
+-   `eslint-plugin-react-hooks`
+-   `sass`
+-   `stylelint-config-standard-scssx`
+-   `stylelint-config-prettier-scss`
+-   `stylelint`
+-   `typescript`
 
 These optional peer dependencies are not required for the project to function but are recommended for better linting and development experience, depending on the tools that are used on the project.
 
@@ -90,7 +92,7 @@ module.exports = {
 	parserOptions: {
 		project: "./tsconfig.json",
 	},
-};
+}
 ```
 
 ##### Stylelint
@@ -105,7 +107,7 @@ module.exports = {
 		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
 		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
 	],
-};
+}
 ```
 
 ##### Prettier
@@ -115,7 +117,7 @@ To use Prettier in your project, you need to create a Prettier configuration fil
 `.prettierrc.js`
 
 ```javascript
-module.exports = require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier");
+module.exports = require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier")
 ```
 
 You will also need to add 'prettier' as a plugin in your ESLint configuration file.
@@ -130,7 +132,7 @@ module.exports = {
 	settings: {
 		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
 	},
-};
+}
 ```
 
 ##### Typescript
@@ -153,7 +155,7 @@ You will also need to add '@typescript-eslint' as a plugin and set `@typescript-
 module.exports = {
 	parser: "@typescript-eslint/parser",
 	plugins: ["@typescript-eslint"],
-};
+}
 ```
 
 ##### Typedoc
@@ -196,7 +198,7 @@ module.exports = {
 	settings: {
 		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
 	},
-};
+}
 ```
 
 `tsconfig.json`
@@ -306,34 +308,34 @@ insert_final_newline = false
 
 This ESLint configuration:
 
-- Extends the following configurations:
+-   Extends the following configurations:
 
-    - `eslint:recommended`: Recommended ESLint rules.
-    - `plugin:@typescript-eslint/eslint-recommended`: ESLint rules for TypeScript (recommended subset).
-    - `plugin:@typescript-eslint/recommended`: Additional recommended ESLint rules for TypeScript.
+    -   `eslint:recommended`: Recommended ESLint rules.
+    -   `plugin:@typescript-eslint/eslint-recommended`: ESLint rules for TypeScript (recommended subset).
+    -   `plugin:@typescript-eslint/recommended`: Additional recommended ESLint rules for TypeScript.
 
-- Ignores specific file patterns from linting:
+-   Ignores specific file patterns from linting:
 
-    - `node_modules/**`
-    - `doc/**`
-    - `build/**`
-    - `dist/**`
+    -   `node_modules/**`
+    -   `doc/**`
+    -   `build/**`
+    -   `dist/**`
 
-- Overrides configurations for specific file patterns:
+-   Overrides configurations for specific file patterns:
 
-    - TypeScript files `(**/*.{ts,tsx})`:
+    -   TypeScript files `(**/*.{ts,tsx})`:
 
-        - Extends the following configurations:
+        -   Extends the following configurations:
 
-            - `"eslint:recommended"`: Recommended ESLint rules.
-            - `"plugin:@typescript-eslint/recommended"`: Additional recommended ESLint rules for TypeScript.
-            - `"plugin:@typescript-eslint/recommended-requiring-type-checking"`: ESLint rules for TypeScript that require type checking.
+            -   `"eslint:recommended"`: Recommended ESLint rules.
+            -   `"plugin:@typescript-eslint/recommended"`: Additional recommended ESLint rules for TypeScript.
+            -   `"plugin:@typescript-eslint/recommended-requiring-type-checking"`: ESLint rules for TypeScript that require type checking.
 
-    - Test files `(test/**)`:
+    -   Test files `(test/**)`:
 
-        - Extends the following configuration:
+        -   Extends the following configuration:
 
-            - `extends: ["plugin:jest/recommended"]`: Extends the recommended ESLint rules for Jest.
+            -   `extends: ["plugin:jest/recommended"]`: Extends the recommended ESLint rules for Jest.
 
 These settings define the formatting rules for your code, such as indentation, semicolons, quotes, commas, and more.
 
