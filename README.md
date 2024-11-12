@@ -14,26 +14,35 @@ You can install the package via npm by running the following command:
 npm install stijnklomp-linting-formatting-config --save-dev
 ```
 
+json-sort-cli
+
 ### Dependencies
 
 ##### Required Dependencies
 
--   `eslint`: ^8.57.0
+-   `@eslint/js`
+-   `eslint`
+-   `eslint-plugin-prettier`
+-   `eslint-config-prettier`
+-   `eslint-plugin-jsonc`
+-   `eslint-plugin-yml`
+-   `typescript-eslint`
 
 ##### Peer Dependencies
 
 Peer dependencies are packages that the project expects to be provided by the consumer (the user or another package). They are not installed automatically and must be manually installed.
 
--   `@types/jest`: ^29.5.12
--   `eslint-config-airbnb`: ^19.0.4
--   `eslint-config-airbnb-typescript`: ^17.1.0
--   `eslint-plugin-import`: ^2.29.1
--   `eslint-plugin-jest`: ^27.9.0
--   `eslint-plugin-jsx-a11y`: ^6.8.0
--   `eslint-plugin-prettier`: ^5.1.3
--   `eslint-plugin-react`: ^7.33.2
--   `eslint-plugin-react-hooks`: ^4.6.0
--   `typescript`: ^5.3.3
+-   `eslint-plugin-jest`
+-   `eslint-plugin-jsx-a11y`
+-   `eslint-plugin-markdown`
+-   `eslint-plugin-react`
+-   `eslint-plugin-react-hooks`
+-   `prettier`
+-   `sass`
+-   `stylelint-config-standard-scss`
+-   `stylelint-config-prettier-scss`
+-   `stylelint`
+-   `typescript`
 
 Use the following to install all peer dependencies not marked as optional:
 
@@ -45,11 +54,15 @@ npx install-peerdeps --dev @stijnklomp/linting-formatting-config --only-peers
 
 The following peer dependencies are optional:
 
--   `eslint-config-airbnb-typescript`
+-   `eslint-plugin-markdown`
 -   `eslint-plugin-jest`
 -   `eslint-plugin-jsx-a11y`
 -   `eslint-plugin-react`
 -   `eslint-plugin-react-hooks`
+-   `sass`
+-   `stylelint-config-standard-scssx`
+-   `stylelint-config-prettier-scss`
+-   `stylelint`
 -   `typescript`
 
 These optional peer dependencies are not required for the project to function but are recommended for better linting and development experience, depending on the tools that are used on the project.
@@ -71,15 +84,15 @@ Include the rules that you desire by extending any of the following files:
 ```javascript
 module.exports = {
 	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/eslintRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/jestRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/reactRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescriptRules.js",
+		"./node_modules/stijnklomp-linting-formatting-config/eslint.js",
+		"./node_modules/stijnklomp-linting-formatting-config/jest.js",
+		"./node_modules/stijnklomp-linting-formatting-config/react.js",
+		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescript.js",
 	],
 	parserOptions: {
 		project: "./tsconfig.json",
 	},
-};
+}
 ```
 
 ##### Stylelint
@@ -92,9 +105,9 @@ To use Stylelint in your project, you need to create a Stylelint configuration f
 module.exports = {
 	extends: [
 		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
-		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelintRules.js",
+		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
 	],
-};
+}
 ```
 
 ##### Prettier
@@ -104,7 +117,7 @@ To use Prettier in your project, you need to create a Prettier configuration fil
 `.prettierrc.js`
 
 ```javascript
-module.exports = require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier");
+module.exports = require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier")
 ```
 
 You will also need to add 'prettier' as a plugin in your ESLint configuration file.
@@ -117,9 +130,9 @@ You can optionally add linting rules for Prettier by extending the Prettier rule
 module.exports = {
 	plugins: ["prettier"],
 	settings: {
-		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettierRules.js"),
+		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
 	},
-};
+}
 ```
 
 ##### Typescript
@@ -142,7 +155,7 @@ You will also need to add '@typescript-eslint' as a plugin and set `@typescript-
 module.exports = {
 	parser: "@typescript-eslint/parser",
 	plugins: ["@typescript-eslint"],
-};
+}
 ```
 
 ##### Typedoc
@@ -165,9 +178,9 @@ To use Typedoc in your project, you need to create a Typedoc configuration file 
 module.exports = {
 	root: true,
 	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/eslintRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/jestRules.js",
-		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescriptRules.js",
+		"./node_modules/stijnklomp-linting-formatting-config/eslint.js",
+		"./node_modules/stijnklomp-linting-formatting-config/jest.js",
+		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescript.js",
 	],
 	parser: "@typescript-eslint/parser",
 	plugins: ["@typescript-eslint", "prettier"],
@@ -183,9 +196,9 @@ module.exports = {
 		es6: true,
 	},
 	settings: {
-		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettierRules.js"),
+		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
 	},
-};
+}
 ```
 
 `tsconfig.json`

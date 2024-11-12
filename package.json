@@ -1,53 +1,92 @@
 {
-	"type": "commonjs",
 	"name": "stijnklomp-linting-formatting-config",
-	"description": "Linting and formatting configuration for Typescript projects.",
-	"version": "6.10.0",
-	"author": "stijnklomp",
-	"license": "MIT",
-	"main": "eslint.js",
+	"version": "7.0.0",
 	"private": false,
+	"description": "Linting and formatting configuration for Typescript projects using typescript-eslint.",
+	"homepage": "https://github.com/stijnklomp/linting-formatting-config#readme",
+	"bugs": {
+		"url": "https://github.com/stijnklomp/linting-formatting-config/issues"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+ssh://git@github.com/stijnklomp/linting-formatting-config.git"
 	},
+	"license": "MIT",
+	"author": "stijnklomp",
+	"type": "module",
+	"main": "./dist/index.js",
 	"files": [
-		".editorconfig",
-		"eslintRules.js",
-		"jestRules.js",
-		"prettier/prettier.js",
-		"prettier/prettierRules.js",
-		"reactRules.js",
-		"stylelint/stylelint.js",
-		"stylelint/stylelintRules.js",
-		"stylelintRulesMui.js",
-		"typedoc.json",
-		"typescript/tsconfig.base.json",
-		"typescript/typescriptRules.js"
+		"dist/**/*",
+		".editorconfig"
 	],
-	"dependencies": {
-		"eslint": "^9.x"
+	"scripts": {
+		"build": "rm -rf dist && tsc -p declaration.tsconfig.json",
+		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
+		"build:declaration": "tsc -p declaration.tsconfig.json",
+		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
+		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
+		"lint": "eslint --report-unused-disable-directives . --cache",
+		"lint:fix": "jsonsort -t -p && eslint --report-unused-disable-directives . --cache --fix",
+		"prepare": "husky",
+		"prepublishOnly": "npm run build"
 	},
-	"peerDependencies": {
-		"@types/jest": "*",
-		"eslint-config-airbnb": "*",
-		"eslint-config-airbnb-typescript": "*",
-		"eslint-plugin-import": "*",
+	"devDependencies": {
+		"@eslint/js": "^9.x",
+		"@typescript-eslint/parser": "^8.x",
+		"eslint": "^9.x",
+		"eslint-config-prettier": "^9.x",
 		"eslint-plugin-jest": "*",
+		"eslint-plugin-jsonc": ">=2.x",
 		"eslint-plugin-jsx-a11y": "*",
+		"eslint-plugin-markdown": "*",
+		"eslint-plugin-package-json": "*",
 		"eslint-plugin-prettier": "*",
 		"eslint-plugin-react": "*",
 		"eslint-plugin-react-hooks": "*",
-		"typescript": ">=5.x"
+		"eslint-plugin-yml": ">=1.x",
+		"husky": ">=9.x",
+		"json-sort-cli": "*",
+		"prettier": "*",
+		"prettier-plugin-packagejson": "*",
+		"sass": "*",
+		"stylelint": "*",
+		"stylelint-config-prettier-scss": "*",
+		"stylelint-config-standard-scss": "*",
+		"typescript": ">=5.x",
+		"typescript-eslint": "^8.x"
+	},
+	"peerDependencies": {
+		"@eslint/js": "^9.x",
+		"@typescript-eslint/parser": "^8.x",
+		"eslint": "^9.x",
+		"eslint-config-prettier": "^9.x",
+		"eslint-plugin-jest": "*",
+		"eslint-plugin-jsonc": ">=2.x",
+		"eslint-plugin-jsx-a11y": "*",
+		"eslint-plugin-markdown": "*",
+		"eslint-plugin-package-json": "*",
+		"eslint-plugin-prettier": "*",
+		"eslint-plugin-react": "*",
+		"eslint-plugin-react-hooks": "*",
+		"eslint-plugin-yml": ">=1.x",
+		"json-sort-cli": "*",
+		"prettier": "*",
+		"prettier-plugin-packagejson": "*",
+		"sass": "*",
+		"stylelint": "*",
+		"stylelint-config-prettier-scss": "*",
+		"stylelint-config-standard-scss": "*",
+		"typescript": ">=5.x",
+		"typescript-eslint": "^8.x"
 	},
 	"peerDependenciesMeta": {
-		"eslint-config-airbnb-typescript": {
-			"optional": true
-		},
 		"eslint-plugin-jest": {
 			"optional": true
 		},
 		"eslint-plugin-jsx-a11y": {
+			"optional": true
+		},
+		"eslint-plugin-markdown": {
 			"optional": true
 		},
 		"eslint-plugin-react": {
@@ -56,15 +95,20 @@
 		"eslint-plugin-react-hooks": {
 			"optional": true
 		},
+		"sass": {
+			"optional": true
+		},
+		"stylelint": {
+			"optional": true
+		},
+		"stylelint-config-prettier-scss": {
+			"optional": true
+		},
+		"stylelint-config-standard-scss": {
+			"optional": true
+		},
 		"typescript": {
 			"optional": true
 		}
-	},
-	"bugs": {
-		"url": "https://github.com/stijnklomp/linting-formatting-config/issues"
-	},
-	"homepage": "https://github.com/stijnklomp/linting-formatting-config#readme",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
 	}
 }
