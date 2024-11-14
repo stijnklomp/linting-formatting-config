@@ -1,6 +1,7 @@
 # ESLint configuration
 
 <p align="center">An <a href="https://eslint.org/" target="_blank">ESLint</a> and <a href="https://prettier.io/" target="_blank">Prettier</a> configuration for linting and formatting code projects. The configurations include rules and settings for code style, formatting, and best practices.</p>
+<p align="center">This project uses <a href="https://typescript-eslint.io/">typescript-eslint</a> to easily implement multiple configurations with <a href="https://www.typescriptlang.org/">Typescript</a> support.</p>
 <p align="center">
 <a href="https://www.npmjs.com/package/stijnklomp-linting-formatting-config" target="_blank"><img src="https://img.shields.io/npm/v/stijnklomp-linting-formatting-config" alt="NPM Version" /></a>
 <img src="https://img.shields.io/github/license/stijnklomp/nestjs-template?style=flat" alt="Package License" />
@@ -14,330 +15,113 @@ You can install the package via npm by running the following command:
 npm install stijnklomp-linting-formatting-config --save-dev
 ```
 
-json-sort-cli
-
-### Dependencies
-
-##### Required Dependencies
-
--   `@eslint/js`
--   `eslint`
--   `eslint-plugin-prettier`
--   `eslint-config-prettier`
--   `eslint-plugin-jsonc`
--   `eslint-plugin-yml`
--   `typescript-eslint`
-
-##### Peer Dependencies
-
-Peer dependencies are packages that the project expects to be provided by the consumer (the user or another package). They are not installed automatically and must be manually installed.
-
--   `eslint-plugin-jest`
--   `eslint-plugin-jsx-a11y`
--   `eslint-plugin-markdown`
--   `eslint-plugin-react`
--   `eslint-plugin-react-hooks`
--   `prettier`
--   `sass`
--   `stylelint-config-standard-scss`
--   `stylelint-config-prettier-scss`
--   `stylelint`
--   `typescript`
-
 Use the following to install all peer dependencies not marked as optional:
 
 ```bash
-npx install-peerdeps --dev @stijnklomp/linting-formatting-config --only-peers
+npx install-peerdeps --dev stijnklomp-linting-formatting-config --only-peers
 ```
 
-##### Peer Dependencies Meta
+TODO:
 
-The following peer dependencies are optional:
+-   json-sort-cli
+-   Stylelint can be used directly by calling the file. It does not use the flat config
+-   Explain the different optional configs that can be used
 
--   `eslint-plugin-markdown`
--   `eslint-plugin-jest`
--   `eslint-plugin-jsx-a11y`
--   `eslint-plugin-react`
--   `eslint-plugin-react-hooks`
--   `sass`
--   `stylelint-config-standard-scssx`
--   `stylelint-config-prettier-scss`
--   `stylelint`
--   `typescript`
+### Dependencies
 
-These optional peer dependencies are not required for the project to function but are recommended for better linting and development experience, depending on the tools that are used on the project.
+This package uses peer dependencies. These are packages that the project expects to be provided by the user. They are not installed automatically and must be manually installed.
 
-Ensure that you have the appropriate versions of the dependencies compatible with this package by referring to the `"peerDependencies"` section in the `package.json` file.
+Check the `peerDependencies` section of the `package.json` file to ensure you have compatible versions of the required dependencies.
+
+##### Required dependencies
+
+-   `@typescript-eslint/parser`
+-   `eslint`
+-   `eslint-config-prettier`
+-   `eslint-plugin-jsonc`
+-   `eslint-plugin-package-json`
+-   `eslint-plugin-prettier`
+-   `eslint-plugin-yml`
+-   `prettier`
+-   `prettier-plugin-packagejson`
+-   `typescript-eslint`
+
+##### Optional dependencies
+
+-   `@eslint/js` Javascript
+-   `eslint-plugin-jest` Jest
+-   `eslint-plugin-markdown` Markdown
+-   `eslint-plugin-react` React
+-   `eslint-plugin-react-hooks` React
+-   `stylelint` CSS/SASS
+-   `stylelint-config-prettier-scss` SASS
+-   `stylelint-config-standard-scss` SASS
+-   `typescript` Typescript
 
 ## Usage
 
-Find example configuration files at the bottom for using everything that is included in this package. (`ESLint`, `Stylelint`, `Prettier`, `Typedoc`, `Jest` and `editor config`)
+Find usage examples below for everything that requires its own configuration file(s). (`ESLint`, `Prettier`, `Typedoc`, `editor config` and `Stylelint`)
 
 ##### ESLint
 
-To use ESLint in your project, you need to create an ESLint configuration file (`.eslintrc.js`) and extend the ESLint config (`@stijnklomp/linting-formatting-config/eslintRules.js`).
+To use ESLint in your project, you need to create an ESLint configuration file (`eslint.config.(m)js`) and use the ESLint config. (`stijnklomp-linting-formatting-config/index.js`)
 
-Include the rules that you desire by extending any of the following files:
-
-`.eslintrc.js`
+`eslint.config.(m)js`
 
 ```javascript
-module.exports = {
-	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/eslint.js",
-		"./node_modules/stijnklomp-linting-formatting-config/jest.js",
-		"./node_modules/stijnklomp-linting-formatting-config/react.js",
-		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescript.js",
-	],
-	parserOptions: {
-		project: "./tsconfig.json",
-	},
-}
+import tseslint from "typescript-eslint"
+import config from "stijnklomp-linting-formatting-config/index.js"
+
+export default tseslint.config(
+	...config({
+		strict: true,
+		tsconfigRootDir: ".",
+		typescript: true,
+	}),
+)
 ```
+
+##### Prettier
+
+To use Prettier in your project, you need to create a Prettier configuration file (`.prettierrc.(m)js`) and extend the Prettier config (`stijnklomp-linting-formatting-config/prettier/prettier`).
+
+`.prettierrc.(m)js`
+
+```javascript
+import { prettierSettings } from "stijnklomp-linting-formatting-config/settings/prettier.js"
+
+export default prettierSettings
+```
+
+##### Typedoc
+
+To use Typedoc in your project, you need to create a Typedoc configuration file (`typedoc.(m)js`) and extend the Typedoc config (`stijnklomp-linting-formatting-config/settings/typedoc.js`).
+
+`typedoc.(m)js`
+
+```javascript
+import { typedocSettings } from "stijnklomp-linting-formatting-config/settings/typedoc.js"
+
+export default typedocSettings
+```
+
+##### Editor config
+
+To use the provided editor config in your project, you need to create an editor config file (`.editorconfig`) and copy over the entire contents of the provided editor config. (`stijnklomp-linting-formatting-config/.editorconfig`)
 
 ##### Stylelint
 
-To use Stylelint in your project, you need to create a Stylelint configuration file (`.stylelintrc.js`) and extend the Stylelint config (`@stijnklomp/linting-formatting-config/stylelint.js`).
+To use Stylelint in your project, you need to create a Stylelint configuration file (`.stylelintrc.js`) and extend the Stylelint settings. (`stijnklomp-linting-formatting-config/settings/stylelint.js`)
 
 `.stylelintrc.js`
 
 ```javascript
 module.exports = {
 	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
-		"./node_modules/stijnklomp-linting-formatting-config/stylelint/stylelint.js",
+		"./node_modules/stijnklomp-linting-formatting-config/settings/stylelint.js",
 	],
 }
 ```
-
-##### Prettier
-
-To use Prettier in your project, you need to create a Prettier configuration file (`.prettierrc.js`) and extend the Prettier config (`stijnklomp-linting-formatting-config/prettier/prettier`).
-
-`.prettierrc.js`
-
-```javascript
-module.exports = require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier")
-```
-
-You will also need to add 'prettier' as a plugin in your ESLint configuration file.
-
-You can optionally add linting rules for Prettier by extending the Prettier rules file (`stijnklomp-linting-formatting-config/prettier/prettierRules.js`).
-
-`.eslintrc.js`
-
-```javascript
-module.exports = {
-	plugins: ["prettier"],
-	settings: {
-		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
-	},
-}
-```
-
-##### Typescript
-
-To use Typescript in your project, you could create a Typescript configuration file (`tsconfig.json`) and extend the Typescript config (`stijnklomp-linting-formatting-config/typescript/tsconfig.base`). (You could also create your own configuration file without extending the base file)
-
-`tsconfig.json`
-
-```json
-{
-	"extends": "./node_modules/stijnklomp-linting-formatting-config/typescript/tsconfig.base"
-}
-```
-
-You will also need to add '@typescript-eslint' as a plugin and set `@typescript-eslint/parser` as your parser in your ESLint configuration file.
-
-`.eslintrc.js`
-
-```javascript
-module.exports = {
-	parser: "@typescript-eslint/parser",
-	plugins: ["@typescript-eslint"],
-}
-```
-
-##### Typedoc
-
-To use Typedoc in your project, you need to create a Typedoc configuration file (`typedoc.json`) and extend the Typedoc config (`@stijnklomp-linting-formatting-config/typedoc`).
-
-`typedoc.json`
-
-```json
-{
-	"extends": ["./node_modules/stijnklomp-linting-formatting-config/typedoc"]
-}
-```
-
-##### Full-length example configuration files
-
-`.eslintrc.js`
-
-```javascript
-module.exports = {
-	root: true,
-	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/eslint.js",
-		"./node_modules/stijnklomp-linting-formatting-config/jest.js",
-		"./node_modules/stijnklomp-linting-formatting-config/typescript/typescript.js",
-	],
-	parser: "@typescript-eslint/parser",
-	plugins: ["@typescript-eslint", "prettier"],
-	parserOptions: {
-		ecmaVersion: 2021,
-		project: "./tsconfig.json",
-		sourceType: "module",
-	},
-	env: {
-		browser: true,
-		node: true,
-		commonjs: true,
-		es6: true,
-	},
-	settings: {
-		"prettier/prettier": require("./node_modules/stijnklomp-linting-formatting-config/prettier/prettier.js"),
-	},
-}
-```
-
-`tsconfig.json`
-
-```json
-{
-	"compileOnSave": false,
-	"compilerOptions": {
-		"allowJs": true,
-		"allowSyntheticDefaultImports": true,
-		"baseUrl": ".",
-		"declaration": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"incremental": true,
-		"inlineSourceMap": false,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"lib": ["dom", "dom.iterable"],
-		"listEmittedFiles": false,
-		"listFiles": false,
-		"module": "ES2022",
-		"moduleResolution": "node",
-		"noEmit": true,
-		"noFallthroughCasesInSwitch": true,
-		"pretty": true,
-		"resolveJsonModule": true,
-		"rootDir": ".",
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "es5",
-		"traceResolution": false,
-		"types": ["node", "jest", "@testing-library/jest-dom"]
-	},
-	"exclude": ["node_modules"],
-	"include": ["**/*.ts", "**/*.tsx", "jest.setup.js"]
-}
-```
-
-`jest.config.json`
-
-```json
-{
-	"testEnvironment": "jsdom",
-	"rootDir": ".",
-	"roots": ["<rootDir>/tests/unit"],
-	"preset": "ts-jest/presets/default-esm",
-	"moduleDirectories": ["node_modules"],
-	"testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.[tj]sx?$",
-	"moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
-	"modulePaths": ["<rootDir>"],
-	"coverageDirectory": "tests/unit/coverage",
-	"transform": {
-		"^.+\\.tsx?$": [
-			"ts-jest",
-			{
-				"useESM": true
-			}
-		]
-	}
-}
-```
-
-`typedoc.json`
-
-```json
-{
-	"extends": ["./node_modules/stijnklomp-linting-formatting-config/typedoc"],
-	"entryPoints": ["./app", "./features"]
-}
-```
-
-`.editorconfig`
-
-```
-root = true
-
-# Use tabs that are equivalent to 4 spaces
-[*]
-charset = utf-8
-indent_style = tab
-tab_width = 4
-
-# 2 spaces for YAML
-[*.yml]
-indent_style = space
-tab_width = 2
-
-[*.yaml]
-indent_style = space
-tab_width = 2
-
-# Ensure that all files have an LF line ending
-[*]
-end_of_line = lf
-
-# Trim trailing whitespace in all files
-[*]
-trim_trailing_whitespace = true
-
-# Disable insertion of a final newline in all files
-[*]
-insert_final_newline = false
-```
-
-## ESLint Configuration
-
-This ESLint configuration:
-
--   Extends the following configurations:
-
-    -   `eslint:recommended`: Recommended ESLint rules.
-    -   `plugin:@typescript-eslint/eslint-recommended`: ESLint rules for TypeScript (recommended subset).
-    -   `plugin:@typescript-eslint/recommended`: Additional recommended ESLint rules for TypeScript.
-
--   Ignores specific file patterns from linting:
-
-    -   `node_modules/**`
-    -   `doc/**`
-    -   `build/**`
-    -   `dist/**`
-
--   Overrides configurations for specific file patterns:
-
-    -   TypeScript files `(**/*.{ts,tsx})`:
-
-        -   Extends the following configurations:
-
-            -   `"eslint:recommended"`: Recommended ESLint rules.
-            -   `"plugin:@typescript-eslint/recommended"`: Additional recommended ESLint rules for TypeScript.
-            -   `"plugin:@typescript-eslint/recommended-requiring-type-checking"`: ESLint rules for TypeScript that require type checking.
-
-    -   Test files `(test/**)`:
-
-        -   Extends the following configuration:
-
-            -   `extends: ["plugin:jest/recommended"]`: Extends the recommended ESLint rules for Jest.
-
-These settings define the formatting rules for your code, such as indentation, semicolons, quotes, commas, and more.
 
 ## License
 

@@ -9,7 +9,6 @@ export const configEslintJs = (
 		files: jsFileExts,
 		name: `${suffixPackageName} @eslint/js`,
 		rules: {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			...(js.configs.recommended.rules as object),
 		},
 	},

@@ -17,7 +17,8 @@
 	"main": "./dist/index.js",
 	"files": [
 		"dist/**/*",
-		".editorconfig"
+		".editorconfig",
+		"sortJson.sh"
 	],
 	"scripts": {
 		"build": "rm -rf dist && tsc -p declaration.tsconfig.json",
@@ -26,7 +27,7 @@
 		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
 		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
 		"lint": "eslint --report-unused-disable-directives . --cache",
-		"lint:fix": "jsonsort -t -p && eslint --report-unused-disable-directives . --cache --fix",
+		"lint:fix": "./sortJson.sh && eslint --report-unused-disable-directives . --cache --fix",
 		"prepare": "husky",
 		"prepublishOnly": "npm run build"
 	},
@@ -62,7 +63,6 @@
 		"eslint-config-prettier": "^9.x",
 		"eslint-plugin-jest": "*",
 		"eslint-plugin-jsonc": ">=2.x",
-		"eslint-plugin-jsx-a11y": "*",
 		"eslint-plugin-markdown": "*",
 		"eslint-plugin-package-json": "*",
 		"eslint-plugin-prettier": "*",
@@ -72,7 +72,6 @@
 		"json-sort-cli": "*",
 		"prettier": "*",
 		"prettier-plugin-packagejson": "*",
-		"sass": "*",
 		"stylelint": "*",
 		"stylelint-config-prettier-scss": "*",
 		"stylelint-config-standard-scss": "*",
@@ -80,10 +79,10 @@
 		"typescript-eslint": "^8.x"
 	},
 	"peerDependenciesMeta": {
-		"eslint-plugin-jest": {
+		"@eslint/js": {
 			"optional": true
 		},
-		"eslint-plugin-jsx-a11y": {
+		"eslint-plugin-jest": {
 			"optional": true
 		},
 		"eslint-plugin-markdown": {
@@ -93,9 +92,6 @@
 			"optional": true
 		},
 		"eslint-plugin-react-hooks": {
-			"optional": true
-		},
-		"sass": {
 			"optional": true
 		},
 		"stylelint": {

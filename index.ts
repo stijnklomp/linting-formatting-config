@@ -123,11 +123,11 @@ export const config = ({
 	const allDefaultConfigs: UsedConfigs = { ...defaultConfigs }
 	const finalConfig: ConfigArray = []
 
-	strict
-		? finalConfig.push(
-				...configTseslintTypescriptStrict({ tsconfigRootDir }),
-			)
-		: mandatoryConfigs.splice(1, 0, "tseslint")
+	if (strict) {
+		finalConfig.push(...configTseslintTypescriptStrict({ tsconfigRootDir }))
+	} else {
+		mandatoryConfigs.splice(1, 0, "tseslint")
+	}
 
 	if (typescript) {
 		finalConfig.push(...configTypescript({ tsconfigRootDir }))
