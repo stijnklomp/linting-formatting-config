@@ -15,11 +15,11 @@
 		"target": "ESNext"
 	},
 	"exclude": [
-		"node_modules",
-		".husky",
 		"./dist/*",
 		"./typedoc.js",
-		"eslint.config.mjs"
+		".husky",
+		"eslint.config.mjs",
+		"node_modules"
 	],
 	"include": ["."]
 }

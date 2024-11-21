@@ -21,6 +21,32 @@ import { configMarkdownCodeBlocks } from "./configs/markdownCodeBlocks.js"
 import { configJest } from "./configs/jest.js"
 import { configJsx } from "./configs/jsx.js"
 
+// ▼▼▼▼
+const optionalConfigs = {
+	// Includes all configs that the user CAN select
+	// The value, set to either `true` or `false`, determines whether or not it is included by default if `includeRemainder` is not specified
+	jest: true,
+	jxs: false,
+	markdownCodeBlocks: true,
+	react: false,
+	stylistic: true,
+}
+// ▲▲▲▲
+
+export type ProvidedConfigOptions = typeof optionalConfigs
+type UsedConfigs = Record<string, boolean>
+
+const mandatoryConfigs = [
+	// Includes all configs that the user CANNOT select but are always added
+	"json",
+	"yml",
+]
+const containsBothJsAndTs = [
+	// Includes all configs that have both JavaScript AND TypeScript
+	// This needs to added in addition to either "optionalConfigs" or "mandatoryConfigs"
+	"stylistic",
+	"tseslint",
+]
 const availableConfigs = {
 	configJest,
 	configJson,
@@ -33,32 +59,6 @@ const availableConfigs = {
 	configYml,
 }
 
-const defaultConfigs = {
-	// Include all configs that the user CAN select
-	// Set the value to `true` or `false` based on whether or not it should be included by default
-	jest: true,
-	jxs: false,
-	markdownCodeBlocks: true,
-	react: false,
-	stylistic: true,
-}
-const mandatoryConfigs = [
-	// Include all configs that the user CANNOT select but are always added
-	"json",
-	"yml",
-]
-const containsBothJsAndTs = [
-	// Include all configs that have both Javascript AND Typescript
-	// This needs to added in addition to either "defaultConfigs" or "mandatoryConfigs"
-	"stylistic",
-	"tseslint",
-]
-
-export type ProvidedConfigOptions = typeof defaultConfigs
-
-// type UsedConfigs = Omit<ProvidedConfigOptions, "includeRemainder">;
-type UsedConfigs = Record<string, boolean>
-
 const capitalizeFirstLetter = (string: string): string =>
 	string.charAt(0).toUpperCase() + string.slice(1)
 const retrieveConfig = (
@@ -70,6 +70,7 @@ const retrieveConfig = (
 		`config${capitalizeFirstLetter(key)}${suffix}`
 	]
 const buildConfig = (
+	typescript: boolean,
 	configs: UsedConfigs,
 	tsconfigRootDir: string,
 ): ConfigArray => {
@@ -81,6 +82,9 @@ const buildConfig = (
 		if (containsBothJsAndTs.includes(key)) {
 			const retrievedConfig = retrieveConfig(key, "Javascript")
 			finalConfig.push(...retrievedConfig({ tsconfigRootDir }))
+
+			if (!typescript) return
+
 			suffix = "Typescript"
 		}
 
@@ -92,7 +96,7 @@ const buildConfig = (
 }
 
 const ignoresConfig: Config = {
-	ignores: ["dist/*"],
+	ignores: ["**/*.d.ts", "dist/*"],
 }
 
 export type Configs = Partial<ProvidedConfigOptions> & {
@@ -103,9 +107,9 @@ export const config = ({
 	configs = {
 		includeRemainder: false,
 	},
-	typescript = true,
 	strict = false,
 	tsconfigRootDir = ".",
+	typescript = true,
 }:
 	| {
 			configs?: Configs
@@ -120,7 +124,7 @@ export const config = ({
 			tsconfigRootDir?: undefined
 	  } = {}): ConfigArray => {
 	const includedConfigs: Partial<UsedConfigs> = {}
-	const allDefaultConfigs: UsedConfigs = { ...defaultConfigs }
+	const allDefaultConfigs: UsedConfigs = { ...optionalConfigs }
 	const finalConfig: ConfigArray = []
 
 	if (strict) {
@@ -156,7 +160,11 @@ export const config = ({
 	})
 
 	finalConfig.push(
-		...buildConfig(includedConfigs as UsedConfigs, tsconfigRootDir),
+		...buildConfig(
+			typescript,
+			includedConfigs as UsedConfigs,
+			tsconfigRootDir,
+		),
 	)
 
 	finalConfig.push(...configPrettier())
