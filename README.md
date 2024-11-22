@@ -78,7 +78,7 @@ To use ESLint in your project, you need to create an ESLint configuration file (
 
 ```javascript
 import tseslint from "typescript-eslint"
-import config from "stijnklomp-linting-formatting-config/index.js"
+import config from "stijnklomp-linting-formatting-config"
 
 export default tseslint.config(
 	...config({
@@ -126,24 +126,24 @@ config({
 
 #### Prettier (Mandatory)
 
-To use Prettier in your project, you need to create a Prettier configuration file (`.prettierrc.(m)js`) and extend the Prettier config (`stijnklomp-linting-formatting-config/prettier/prettier`).
+To use Prettier in your project, you need to create a Prettier configuration file (`.prettierrc.(m)js`) and extend the Prettier config (`stijnklomp-linting-formatting-config/dist/settings/prettier.js`).
 
 `.prettierrc.(m)js`
 
 ```javascript
-import { prettierSettings } from "stijnklomp-linting-formatting-config/settings/prettier.js"
+import { prettierSettings } from "stijnklomp-linting-formatting-config/dist/settings/prettier.js"
 
 export default prettierSettings
 ```
 
 #### Typedoc (Optional)
 
-To use Typedoc in your project, you need to create a Typedoc configuration file (`typedoc.(m)js`) and extend the Typedoc config (`stijnklomp-linting-formatting-config/settings/typedoc.js`).
+To use Typedoc in your project, you need to create a Typedoc configuration file (`typedoc.(m)js`) and extend the Typedoc config (`stijnklomp-linting-formatting-config/dist/settings/typedoc.js`).
 
 `typedoc.(m)js`
 
 ```javascript
-import { typedocSettings } from "stijnklomp-linting-formatting-config/settings/typedoc.js"
+import { typedocSettings } from "stijnklomp-linting-formatting-config/dist/settings/typedoc.js"
 
 export default typedocSettings
 ```
@@ -154,14 +154,14 @@ To use the provided editor config in your project, you need to create an editor 
 
 #### Stylelint (Optional)
 
-To use Stylelint in your project, you need to create a Stylelint configuration file (`.stylelintrc.js`) and extend the Stylelint settings. (`stijnklomp-linting-formatting-config/settings/stylelint.js`) **Note:** Flat config is currently not supported.
+To use Stylelint in your project, you need to create a Stylelint configuration file (`.stylelintrc.js`) and extend the Stylelint settings. (`stijnklomp-linting-formatting-config/dist/settings/stylelint.js`) **Note:** Flat config is currently not supported.
 
 `.stylelintrc.js`
 
 ```javascript
 module.exports = {
 	extends: [
-		"./node_modules/stijnklomp-linting-formatting-config/settings/stylelint.js",
+		"./node_modules/stijnklomp-linting-formatting-config/dist/settings/stylelint.js",
 	],
 }
 ```
