@@ -51,7 +51,7 @@ The below dependencies are required for both JavaScript and TypeScript.
 #### Optional dependencies
 
 -   **JavaScript**:
-    -   `@eslint/js` (Will not be loaded when using TypeScript)
+    -   `@eslint/js` (Will not be used when using TypeScript)
 -   **Testing**:
     -   `eslint-plugin-jest` (Jest)
 -   **Markdown**:
@@ -72,13 +72,13 @@ Find usage examples below for everything that requires its own configuration fil
 
 #### ESLint (Mandatory)
 
-To use ESLint in your project, you need to create an ESLint configuration file (`eslint.config.(m)js`) and use the ESLint config. (`stijnklomp-linting-formatting-config/index.js`)
+To use ESLint in your project, you need to create an ESLint configuration file (`eslint.config.(m)js`) and use the ESLint config. (`stijnklomp-linting-formatting-config/dist/index.js`)
 
 `eslint.config.(m)js`
 
 ```javascript
 import tseslint from "typescript-eslint"
-import config from "stijnklomp-linting-formatting-config"
+import config from "stijnklomp-linting-formatting-config/dist/index.js"
 
 export default tseslint.config(
 	...config({
