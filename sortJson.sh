@@ -22,4 +22,4 @@ for path in "${EXCLUDE_PATHS[@]}"; do
 	EXCLUDE_ARGS+=(-o -path "$path")
 done
 
-find . \( -path "./node_modules" "${EXCLUDE_ARGS[@]}" \) -prune -o -type f -name "*.json" -exec npx jsonsort {} \;
+find . \( -path "./node_modules" "${EXCLUDE_ARGS[@]}" \) -prune -o -type f -name "*.json" -exec npx jsonsort -t -p {} \;
