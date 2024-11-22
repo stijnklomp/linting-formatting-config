@@ -1,6 +1,6 @@
 {
 	"name": "stijnklomp-linting-formatting-config",
-	"version": "7.0.0",
+	"version": "7.0.1",
 	"private": false,
 	"description": "Linting and formatting configuration for Typescript projects using typescript-eslint.",
 	"homepage": "https://github.com/stijnklomp/linting-formatting-config#readme",
