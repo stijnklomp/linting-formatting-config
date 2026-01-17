@@ -1,7 +1,7 @@
 import { Config } from "stylelint"
 
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-const rules: Config["rules"] = {
+const rules: (typeof Config)["rules"] = {
 	"color-no-invalid-hex": true,
 	"custom-property-pattern": [
 		"^[a-z0-9][a-zA-Z0-9]*(?:(?:_{2}|-{2})[a-z0-9][a-zA-Z0-9]*)*$",
