@@ -3,7 +3,7 @@ import tseslint from "typescript-eslint"
 import config from "./dist/index.js"
 import { tsFileExts, suffixPackageName } from "./dist/helper.js"
 
-export default tseslint.config(
+export default [
 	...config({
 		strict: true,
 		tsconfigRootDir: ".",
@@ -39,4 +39,4 @@ export default tseslint.config(
 			],
 		},
 	},
-)
+]
