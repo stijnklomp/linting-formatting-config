@@ -51,6 +51,8 @@ npm install
 
 To upgrade across major version boundaries, use `npm-check-updates`.
 
+> **Note on `min-release-age`**: `.npmrc` sets `min-release-age = 259200` (3 days). This means `npm update` will not install releases newer than 3 days old as a security precaution. If the user needs the absolute latest versions regardless of age, they must manually lower or remove this value in `.npmrc` themselves. The agentic AI must not modify this setting.
+
 **Option B: Update a specific package**
 
 ```bash
@@ -256,3 +258,4 @@ Include in the commit:
 - **Always run `lint:fix`** after upgrading formatting-related packages (Prettier, ESLint, etc.)
 - **When upgrading typescript-eslint**, verify the exported configs in `dist/index.js` still work correctly
 - **When in doubt**, restore `package-lock.json` from git and try a more targeted upgrade
+- **Never modify `.npmrc`'s `min-release-age`** — this is a security boundary. If the user needs dependencies newer than the configured age limit, the user must manually update this value themselves. The agentic AI is not allowed to change it.
