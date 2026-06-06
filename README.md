@@ -37,34 +37,31 @@ Check the `peerDependencies` section of the `package.json` file to ensure you ha
 
 The below dependencies are required for both JavaScript and TypeScript.
 
--   `@typescript-eslint/parser`
--   `eslint`
--   `eslint-config-prettier`
--   `eslint-plugin-jsonc`
--   `eslint-plugin-package-json`
--   `eslint-plugin-prettier`
--   `eslint-plugin-yml`
--   `prettier`
--   `prettier-plugin-packagejson`
--   `typescript-eslint`
+- `@typescript-eslint/parser`
+- `eslint`
+- `eslint-config-prettier`
+- `eslint-plugin-jsonc`
+- `eslint-plugin-package-json`
+- `eslint-plugin-prettier`
+- `eslint-plugin-yml`
+- `prettier`
+- `prettier-plugin-packagejson`
+- `typescript-eslint`
 
 #### Optional dependencies
 
--   **JavaScript**:
-    -   `@eslint/js` (Will not be used when using TypeScript)
--   **Testing**:
-    -   `eslint-plugin-jest` (Jest)
--   **Markdown**:
-    -   `eslint-plugin-markdown` (Markdown)
--   **React**:
-    -   `eslint-plugin-react`
-    -   `eslint-plugin-react-hooks`
--   **CSS/SASS**:
-    -   `stylelint`
-    -   `stylelint-config-prettier-scss`
-    -   `stylelint-config-standard-scss`
--   **TypeScript**:
-    -   `typescript`
+- **JavaScript**:
+    - `@eslint/js` (Will not be used when using TypeScript)
+- **Testing**:
+    - `eslint-plugin-jest` (Jest)
+- **Markdown**:
+    - `eslint-plugin-markdown` (Markdown)
+- **CSS/SASS**:
+    - `stylelint`
+    - `stylelint-config-prettier-scss`
+    - `stylelint-config-standard-scss`
+- **TypeScript**:
+    - `typescript`
 
 ## Usage
 

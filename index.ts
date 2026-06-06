@@ -28,7 +28,6 @@ const optionalConfigs = {
 	jest: true,
 	jxs: false,
 	markdownCodeBlocks: true,
-	react: false,
 	stylistic: true,
 }
 // ▲▲▲▲
