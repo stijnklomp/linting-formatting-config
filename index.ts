@@ -20,6 +20,7 @@ import {
 import { configMarkdownCodeBlocks } from "./configs/markdownCodeBlocks.js"
 import { configJest } from "./configs/jest.js"
 import { configJsx } from "./configs/jsx.js"
+import { configNext } from "./configs/next.js"
 
 // ▼▼▼▼
 const optionalConfigs = {
@@ -28,6 +29,7 @@ const optionalConfigs = {
 	jest: true,
 	jxs: false,
 	markdownCodeBlocks: true,
+	next: false,
 	stylistic: true,
 }
 // ▲▲▲▲
@@ -51,6 +53,7 @@ const availableConfigs = {
 	configJson,
 	configJsx,
 	configMarkdownCodeBlocks,
+	configNext,
 	configStylisticJavascript,
 	configStylisticTypescript,
 	configTseslintJavascript,

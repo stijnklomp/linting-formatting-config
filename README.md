@@ -56,6 +56,8 @@ The below dependencies are required for both JavaScript and TypeScript.
     - `eslint-plugin-jest` (Jest)
 - **Markdown**:
     - `eslint-plugin-markdown` (Markdown)
+- **Next.js**:
+    - `eslint-config-next` (Next.js + React rules)
 - **CSS/SASS**:
     - `stylelint`
     - `stylelint-config-prettier-scss`
