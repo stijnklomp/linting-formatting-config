@@ -1,0 +1,15 @@
+# Build output
+dist/
+
+# Node modules
+node_modules/
+
+# Git
+.git/
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+*.log

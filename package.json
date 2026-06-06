@@ -22,9 +22,6 @@
 	],
 	"scripts": {
 		"build": "rm -rf dist && tsc -p declaration.tsconfig.json",
-		"build:add-ignores": "ts-ignore-import '**/*.d.ts' --allow=eslint",
-		"build:declaration": "tsc -p declaration.tsconfig.json",
-		"build:old": "npm run clean && npm run build:declaration && npm run build:add-ignores",
 		"clean": "rm -rf $(find . -maxdepth 2 -type f -name '*.d.ts*')",
 		"lint": "eslint --report-unused-disable-directives . --cache",
 		"lint:fix": "./sortJson.sh && eslint --report-unused-disable-directives . --cache --fix",
