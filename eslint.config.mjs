@@ -1,3 +1,5 @@
+import { fileURLToPath } from "node:url"
+
 import tseslint from "typescript-eslint"
 
 import config from "./dist/index.js"
@@ -6,7 +8,7 @@ import { tsFileExts, suffixPackageName } from "./dist/helper.js"
 export default [
 	...config({
 		strict: true,
-		tsconfigRootDir: ".",
+		tsconfigRootDir: fileURLToPath(new URL(".", import.meta.url)),
 		typescript: true,
 	}),
 	{

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import tseslint from "typescript-eslint"
 import typescriptEslintParser from "@typescript-eslint/parser"
 
@@ -35,7 +34,6 @@ export const configStylisticTypescript = (params: {
 		languageOptions: {
 			parser: typescriptEslintParser,
 			parserOptions: {
-				project: "./tsconfig.json",
 				sourceType: "module",
 				tsconfigRootDir: params.tsconfigRootDir,
 			},

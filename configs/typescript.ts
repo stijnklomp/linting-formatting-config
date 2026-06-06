@@ -14,10 +14,9 @@ export const configTypescript = (params: {
 			globals: {
 				...globals.node,
 			},
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+
 			parser: typescriptEslintParser,
 			parserOptions: {
-				project: "./tsconfig.json",
 				projectService: true,
 				sourceType: "module",
 				tsconfigRootDir: params.tsconfigRootDir,

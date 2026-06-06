@@ -9,18 +9,18 @@ export const configReact = (
 ): ConfigArray => [
 	{
 		name: `${suffixPackageName} React`,
-		...(reactPlugin.configs.flat?.recommended ?? {}),
-		...(reactPlugin.configs.flat?.["jsx-runtime"] ?? {}),
+		...reactPlugin.configs.flat.recommended,
+		...reactPlugin.configs.flat["jsx-runtime"],
 		files: ["**/*.jsx", "**/*.tsx"],
 		languageOptions: {
-			...(reactPlugin.configs.flat?.recommended.languageOptions ?? {}),
+			...reactPlugin.configs.flat.recommended.languageOptions,
 			globals: {
 				...globals.serviceworker,
 				...globals.browser,
 			},
 		},
 		rules: {
-			...(reactPlugin.configs.flat?.recommended.rules ?? {}),
+			...reactPlugin.configs.flat.recommended.rules,
 			...reactRules.default,
 		},
 	},
