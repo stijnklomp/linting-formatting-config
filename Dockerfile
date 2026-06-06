@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm ci && npm install -g npm-check-updates
 
 # Default command — override when running the container
-CMD ["npm", "update"]
+CMD ["ncu"]
