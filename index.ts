@@ -20,12 +20,9 @@ import {
 import { configMarkdownCodeBlocks } from "./configs/markdownCodeBlocks.js"
 import { configJest } from "./configs/jest.js"
 import { configJsx } from "./configs/jsx.js"
-import { configNext } from "./configs/next.js"
 
 // ▼▼▼▼
 const optionalConfigs = {
-	// Includes all configs that the user CAN select
-	// The value, set to either `true` or `false`, determines whether or not it is included by default if `includeRemainder` is not specified
 	jest: true,
 	jxs: false,
 	markdownCodeBlocks: true,
@@ -53,7 +50,6 @@ const availableConfigs = {
 	configJson,
 	configJsx,
 	configMarkdownCodeBlocks,
-	configNext,
 	configStylisticJavascript,
 	configStylisticTypescript,
 	configTseslintJavascript,
@@ -61,38 +57,66 @@ const availableConfigs = {
 	configYml,
 }
 
+type ConfigFunction = (params: {
+	tsconfigRootDir?: string
+}) => ConfigArray | Promise<ConfigArray>
+
+const lazyConfigs: Record<string, () => Promise<ConfigFunction>> = {
+	next: async () => {
+		const { configNext } = await import("./configs/next.js")
+
+		return configNext
+	},
+}
+
 const capitalizeFirstLetter = (string: string): string =>
 	string.charAt(0).toUpperCase() + string.slice(1)
 const retrieveConfig = (
 	key: string,
 	suffix: string,
-): ((params: { tsconfigRootDir?: string }) => ConfigArray) =>
+): ConfigFunction | undefined =>
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
 	(availableConfigs as Record<string, any>)[
 		`config${capitalizeFirstLetter(key)}${suffix}`
 	]
-const buildConfig = (
+const buildConfig = async (
 	typescript: boolean,
 	configs: UsedConfigs,
 	tsconfigRootDir: string,
-): ConfigArray => {
+): Promise<ConfigArray> => {
 	const finalConfig: ConfigArray = []
 
-	Object.keys(configs).forEach((key) => {
+	for (const key of Object.keys(configs)) {
 		let suffix = ""
 
 		if (containsBothJsAndTs.includes(key)) {
 			const retrievedConfig = retrieveConfig(key, "Javascript")
-			finalConfig.push(...retrievedConfig({ tsconfigRootDir }))
 
-			if (!typescript) return
+			if (retrievedConfig) {
+				const result = await retrievedConfig({ tsconfigRootDir })
+				finalConfig.push(...result)
+			}
+
+			if (!typescript) continue
 
 			suffix = "Typescript"
 		}
 
 		const retrievedConfig = retrieveConfig(key, suffix)
-		finalConfig.push(...retrievedConfig({ tsconfigRootDir }))
-	})
+
+		if (retrievedConfig) {
+			const result = await retrievedConfig({ tsconfigRootDir })
+			finalConfig.push(...result)
+		} else {
+			const lazyLoader = lazyConfigs[key]
+
+			if (lazyLoader) {
+				const lazyFn = await lazyLoader()
+				const result = await lazyFn({ tsconfigRootDir })
+				finalConfig.push(...result)
+			}
+		}
+	}
 
 	return finalConfig
 }
@@ -105,26 +129,19 @@ export type Configs = Partial<ProvidedConfigOptions> & {
 	includeRemainder: boolean
 }
 
-export const config = ({
+export const config = async ({
 	configs = {
 		includeRemainder: false,
 	},
 	strict = false,
 	tsconfigRootDir = ".",
 	typescript = true,
-}:
-	| {
-			configs?: Configs
-			typescript?: true
-			strict?: boolean
-			tsconfigRootDir?: string
-	  }
-	| {
-			configs?: Configs
-			typescript?: false
-			strict?: false
-			tsconfigRootDir?: undefined
-	  } = {}): ConfigArray => {
+}: {
+	configs?: Configs
+	typescript?: boolean
+	strict?: boolean
+	tsconfigRootDir?: string
+} = {}): Promise<ConfigArray> => {
 	const includedConfigs: Partial<UsedConfigs> = {}
 	const allDefaultConfigs: UsedConfigs = { ...optionalConfigs }
 	const finalConfig: ConfigArray = []
@@ -162,11 +179,11 @@ export const config = ({
 	})
 
 	finalConfig.push(
-		...buildConfig(
+		...(await buildConfig(
 			typescript,
 			includedConfigs as UsedConfigs,
 			tsconfigRootDir,
-		),
+		)),
 	)
 
 	finalConfig.push(...configPrettier())

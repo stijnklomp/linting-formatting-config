@@ -1,11 +1,16 @@
 import type { Linter } from "eslint"
-import nextConfig from "eslint-config-next/core-web-vitals"
 import { ConfigArray, suffixPackageName, appendNameIfExist } from "../helper.js"
 
-export const configNext = (
+export const configNext = async (
 	_params: { tsconfigRootDir?: string } = {},
-): ConfigArray =>
-	(nextConfig as Linter.Config[]).map((config) => ({
+): Promise<ConfigArray> => {
+	const { default: nextConfig } =
+		(await import("eslint-config-next/core-web-vitals")) as {
+			default: Linter.Config[]
+		}
+
+	return nextConfig.map((config) => ({
 		...config,
 		name: `${suffixPackageName} Next.js${appendNameIfExist(config.name)}`,
 	}))
+}

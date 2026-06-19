@@ -5,12 +5,14 @@ import tseslint from "typescript-eslint"
 import config from "./dist/index.js"
 import { tsFileExts, suffixPackageName } from "./dist/helper.js"
 
+const baseConfig = await config({
+	strict: true,
+	tsconfigRootDir: fileURLToPath(new URL(".", import.meta.url)),
+	typescript: true,
+})
+
 export default [
-	...config({
-		strict: true,
-		tsconfigRootDir: fileURLToPath(new URL(".", import.meta.url)),
-		typescript: true,
-	}),
+	...baseConfig,
 	{
 		files: tsFileExts,
 		name: `${suffixPackageName} Jest`,
